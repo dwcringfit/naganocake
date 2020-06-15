@@ -15,3 +15,34 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+/* レイアウト全体 */
+header {
+  color:white;
+  
+  .navbar-left {
+    span {
+      font-size: 20px;
+      padding-top: 10px; 
+    }
+  }
+
+}
+
+body {
+	margin-top: 60px;
+}
+
+#error_explanation {
+	color: red;
+}
+
+.alert-notice {
+	background-color: #dff0d8;
+	border-color: #d6e9c6;
+	color: #3c763d;
+}
+
+.actions {
+	margin: 10px 0;
+}

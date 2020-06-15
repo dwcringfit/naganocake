@@ -12,9 +12,9 @@
 
   <body>
     <% content_for :content do %>  
-      <%= render 'layouts/client/header' %>
+      <%= render 'client/header' %>
       <div class="container"><%= yield %></div>
-      <%= render 'layouts/client/footer' %>
+      <%= render 'client/footer' %>
     <% end %>
     <%= render template: "layouts/application" %>
   </body>

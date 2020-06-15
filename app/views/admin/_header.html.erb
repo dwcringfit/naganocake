@@ -1,0 +1,21 @@
+<!--ヘッダーの記述-->
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <nav class="nav navbar-nav navbar-left">
+      <span>ながのCAKE</span>
+    </nav>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <% if admin_signed_in? %>
+          <li><%= link_to ' 商品一覧', admin_items_path, class: 'glyphicon glyphicon-picture picture' %></li>
+          <li><%= link_to ' 会員一覧', admin_clients_path, class: 'glyphicon glyphicon-user user' %></li>
+          <li><%= link_to ' 注文履歴一覧', admin_orders_path, class: 'glyphicon glyphicon-file file' %></li>
+          <li><%= link_to ' ジャンル一覧', admin_genres_path, class: 'glyphicon glyphicon-list-alt list-alt' %></li>
+          <li><%= link_to ' ログアウト', destroy_admin_session_path, method: :delete, class: 'glyphicon glyphicon-log-out log-out' %></li>
+        <% else %>
+          <li><%= link_to ' ログイン', new_admin_session_path, class: 'glyphicon glyphicon-log-in log-in' %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>

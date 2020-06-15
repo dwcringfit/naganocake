@@ -11,9 +11,9 @@
 
   <body>
     <% content_for :content do %>  
-      <%= render 'layouts/admin/header' %>
+      <%= render 'admin/header' %>
       <div class="container"><%= yield %></div>
-      <%= render 'layouts/admin/footer' %>
+      <%= render 'admin/footer' %>
     <% end %>
     <%= render template: "layouts/application" %>
   </body>

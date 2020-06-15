@@ -7,8 +7,12 @@ Rails.application.routes.draw do
     root to: 'top#top'
 
     # 会員ユーザー
-    devise_for :clients
-    resources :clients, only: :show do
+    devise_for :clients, controllers: {
+      sessions: 'client/clients/sessions',
+      registrations: 'client/clients/registrations',
+      passwords: 'client/clients/passwords'
+    }
+    resources :clients, only: [:show, :edit, :update] do
       # 退会処理
       collection do
         get :cancel, to: 'clients#confirm_cancel'
@@ -35,14 +39,14 @@ Rails.application.routes.draw do
     resources :deliveries, except: [:show]
   end
 
+  # 管理者ユーザー
+  devise_for :admins, only: [:sign_in, :sign_out, :session]
+
   # 管理者用ルーティング
   namespace :admin do
 
     # 管理画面トップ
     root to: 'top#top'
-
-    # 管理者ユーザー
-    devise_for :admins, only: [:sign_in, :sign_out, :session]
 
     # 顧客管理
     resources :clients, except: [:create, :destroy]

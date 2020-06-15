@@ -1,13 +1,8 @@
 # 顧客用ECサイト ApplicationController
 class Client::Base < ApplicationController
+  # client.html.erbを読み込み
+  layout 'client'
+  # 会員ログインチェック
+  before_action :authenticate_client!, except: :top
 
-  protected
-
-  def devise_parameter_sanitizer
-    if resource_class == Client
-      Client::ParameterSanitizer.new(Client, :client, params)
-    else
-      super
-    end
-  end
 end
