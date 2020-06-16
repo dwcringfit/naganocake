@@ -4,7 +4,7 @@
 
 <%= form_for(@item) do |f| %>
 
-<%= render "layouts/error_messages", resource:f.object  %>
+<%= render "layouts/error_messages", model: f.object  %>
 
 <div class="field">
 	<%= f.label :image,"商品イメージ" %>

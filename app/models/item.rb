@@ -11,5 +11,6 @@ class Item < ApplicationRecord
 	validates :price, presence: true
 	validates :is_sale, presence: true
 
+    attachment :image
 
 end
