@@ -1,4 +1,4 @@
-class Client::ItemsController < client::bace
+class Client::ItemsController < Client::Base
 
 
   def index

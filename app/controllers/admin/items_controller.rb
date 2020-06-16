@@ -1,4 +1,4 @@
-class Admin::ItemsController < admin::bace
+class Admin::ItemsController < Admin::Base
 
 
     def index

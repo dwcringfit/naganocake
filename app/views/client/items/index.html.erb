@@ -31,6 +31,7 @@
 			</thead>
 
 			<tbody>
+				<% if @items %>
 				<% @items.each do |item| %>
 				<tr>
 					<td>
@@ -40,8 +41,9 @@
 					</td>
 					<td><%= link_to item.name, item, class: "item_#{item.id}" %></td>
 					<td><%= item.price %></td>
-					<td><%= item.is_sale? "販売中" : "売り切れ" %>
+					<td><%= item.is_sale ? "販売中" : "売り切れ" %>
 				</tr>
+				<% end %>
 				<% end %>
 			</tbody>
 		</table>
