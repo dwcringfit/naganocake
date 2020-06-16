@@ -1,8 +1,8 @@
 class Admin::GenresController < Admin::Base
 
   def index
+  	  @genre = Genre.new
 	  @genres = Genre.all
-	  @genre = Genre.new
   end
 
 
@@ -14,6 +14,7 @@ class Admin::GenresController < Admin::Base
 	  else
 	     @genre = Genre.all
 	     render 'index'
+	  end
   end
 
 
@@ -41,4 +42,5 @@ private
   def genre_params
 	  params.require(:genre).permit(:list,:is_valid)
   end
+
 end

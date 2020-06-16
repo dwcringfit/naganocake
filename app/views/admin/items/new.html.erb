@@ -2,7 +2,7 @@
 <h1>商品新規登録</h1>
 
 
-<%= form_for(@item) do |f| %>
+<%= form_for(@item, url: admin_items_path) do |f| %>
 
 <%= render "layouts/error_messages", model: f.object  %>
 
@@ -23,7 +23,7 @@
 
 <div class="form-group">
 	<%= f.label :genre_id, "ジャンル" %>
-	<%= f.collection_select :genre_id, Genre.all, :id, :list, {include_blank: "選択してください"},{class: 'form-control', required: true} %>
+	<%= f.collection_select :genre_id, Genre.all, :id, :name, {include_blank: "選択してください"},{class: 'form-control', required: true} %>
 </div>
 
 <div class="field">
@@ -34,7 +34,7 @@
 
 <div class="form-group">
 	<%= f.label :is_sale, "販売ステータス" %>
-	<%= f.select :is_sale, {"販売中": 0,"売り切れ": 1},{include_blank: "選択してください"},{class: 'form-control', required: true} %>
+	<%= f.select :is_sale, {"売り切れ": 0,"販売中": 1},{include_blank: "選択してください"},{class: 'form-control', required: true} %>
 </div>
 
 

@@ -8,7 +8,7 @@
 					<tr>
 						<td>
 							<% @genres.each do |genre| %>
-							<%= link_to genre.list, items_path, method: :get, genre_id: genre.id %>
+							<%= link_to genre.name, items_path, method: :get, genre_id: genre.id %>
 							<% end %>
 						</td>
 					</tr>

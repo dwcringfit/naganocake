@@ -7,10 +7,9 @@ class Item < ApplicationRecord
 
 	validates :name, presence: true
 	validates :context, presence: true
-	validates :image_id, presence: true
 	validates :price, presence: true
-	validates :is_sale, presence: true
 
     attachment :image
+
 
 end

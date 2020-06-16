@@ -8,13 +8,14 @@ class Admin::ItemsController < Admin::Base
 
     def new
 	  @item = Item.new
+	  @genres = Genre.all
     end
 
 
     def create
 	  @item = Item.new(item_params)
 	  if @item.save
-		  redirect_to @item
+		  redirect_to admin_item_path(@item)
 	  else
 		  render "new"
 	  end
@@ -23,7 +24,7 @@ class Admin::ItemsController < Admin::Base
 
     def show
     	@item = Item.find(params[:id])
-    	@item_taxin = item.price * 1.08
+    	@item_taxin = @item.price * 1.08
     end
 
 
@@ -35,7 +36,7 @@ class Admin::ItemsController < Admin::Base
     def update
 	  @item = Item.find(params[:id])
 	  if @item.update(item_params)
-	     redirect_to @item
+	     redirect_to admin_item_path(@item)
 	  else
 	  	 render 'edit'
 	  end
@@ -46,7 +47,7 @@ class Admin::ItemsController < Admin::Base
 private
 
   def item_params
-  	params.require(:item).permit(:name,:context,:image_id,:genre_id,:price,:is_sale)
+  	params.require(:item).permit(:name,:context,:image,:genre_id,:price,:is_sale)
   end
 
 end

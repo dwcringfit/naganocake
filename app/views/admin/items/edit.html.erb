@@ -2,9 +2,9 @@
 <h1>商品編集</h1>
 
 
-<%= form_for(@item) do |f| %>
+<%= form_for(@item, url: admin_item_path(@item)) do |f| %>
 
-<%= render "layouts/error_messages", resource:f.object  %>
+<%= render "layouts/error_messages", model: f.object  %>
 
 <div class="field">
 	<%= f.label :image,"商品イメージ" %>
@@ -23,7 +23,7 @@
 
 <div class="form-group">
 	<%= f.label :genre_id, "ジャンル" %>
-	<%= f.collection_select :genre_id, Genre.all, :id, :list, {include_blank: "選択してください"},{class: 'form-control', required: true} %>
+	<%= f.collection_select :genre_id, Genre.all, :id, :name, {include_blank: "選択してください"},{class: 'form-control', required: true} %>
 </div>
 
 <div class="field">
@@ -34,12 +34,12 @@
 
 <div class="form-group">
 	<%= f.label :is_sale, "販売ステータス" %>
-	<%= f.select :is_sale, {"販売中": 0,"売り切れ": 1},{include_blank: "選択してください"},{class: 'form-control', required: true} %>
+	<%= f.select :is_sale, {"売り切れ": 0,"販売中": 1},{include_blank: "選択してください", selected: get_is_sale(@item.is_sale) },{class: 'form-control'} %>
 </div>
 
 
 <div class="actions">
-	<%= f.submit "新規登録", class: 'btn btn-primary btn-block' %>
+	<%= f.submit "変更を保存", class: 'btn btn-primary btn-block' %>
 </div>
 
 <% end %>
