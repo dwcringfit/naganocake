@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for?(:title) ? yield(:title) : '管理ページ' %></title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <% content_for :content do %>  
+      <%= render 'admin/header' %>
+      <div class="container"><%= yield %></div>
+      <%= render 'admin/footer' %>
+    <% end %>
+    <%= render template: "layouts/application" %>
+  </body>
+</html>
