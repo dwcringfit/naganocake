@@ -16,7 +16,7 @@
 				<tr>
 					<td><%= item.id %></td>
 					<td><%= link_to item.name, item, class: "item_#{item.id}" %></td>
-					<td><%= item.price %></td>  <!-- 税抜表示！！！！！ -->
+					<td><%= item.price %></td>
 					<td><%= item.is_sale? "販売中" : "売り切れ" %>
 				</tr>
 				<% end %>

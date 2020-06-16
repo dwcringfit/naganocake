@@ -23,6 +23,7 @@ class Admin::ItemsController < admin::bace
 
     def show
     	@item = Item.find(params[:id])
+    	@item_taxin = item.price * 1.08
     end
 
 
