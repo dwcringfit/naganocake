@@ -13,3 +13,42 @@
  *= require_tree .
  *= require_self
  */
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+/* エラー表示 */
+.field_with_errors {
+  display: contents;
+  @extend .has-error;
+}
+
+/* レイアウト全体 */
+header {
+  color:white;
+  
+  .navbar-left {
+    span {
+      font-size: 20px;
+      padding-top: 10px; 
+    }
+  }
+
+}
+
+body {
+	margin-top: 60px;
+}
+
+#error_explanation {
+	color: red;
+}
+
+.alert-notice {
+	background-color: #dff0d8;
+	border-color: #d6e9c6;
+	color: #3c763d;
+}
+
+.actions {
+	margin: 10px 0;
+}
