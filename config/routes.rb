@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'genres/index'
+    get 'genres/edit'
+  end
+  namespace :client do
+    get 'items/index'
+    get 'items/show'
+  end
   # 顧客用ルーティング
   scope module: :client do
 

@@ -1,0 +1,31 @@
+<h2>ジャンル検索</h2>
+			<table class="table table-hover table-inverse">
+				<tbody>
+					<tr>
+						<td>
+							<% @genres.each do |genre| %>
+							<%= link_to genre.list, items_path, method: :get, genre_id: genre.id %>
+							<% end %>
+						</td>
+					</tr>
+				</tbody>
+				<!-- ジャンル検索機能 -->
+
+		<table class="table">
+				<tr>
+					<td>
+						<%= attachment_image_tag(@item, :image, format: 'jpeg', size: '500x500', fallback: "no-image-mini.jpg") %><br>
+						<%= @item.name %>
+					</td>
+					<td><%= @item.context %></td>
+					<td>
+						<%= @item.price %>
+					</td>
+					<%= form_for @cart_item do |f| %>
+					<%= f.hidden_field :item_id, value: @item.id %>
+					<td><%= f.select :item_count,options_for_select((1..10).to_a),include_blank: "個数選択" %></td>
+					<td><%= f.submit "購入する" %></td>
+					<%= end %>
+				</tr>
+			</table>
+

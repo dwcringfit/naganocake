@@ -1,0 +1,14 @@
+<h1>ジャンル編集</h1>
+
+<%= render "admins/shared/error_messages", resource: resource %>
+
+  <%= form_for @genre do |f| %>
+  	<%= f.label :list, "ジャンル" %>
+  	<%= f.text_field :list %>
+
+  	<%= f.radio_buttun :is_valid, true, checked: true %>
+  	<%= f.label :is_valid, is_valid(f.is_valid) %>
+
+
+   <%= f.submit "編集を保存する" %>
+ <%= end %>
