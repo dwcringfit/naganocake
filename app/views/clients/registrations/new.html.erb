@@ -1,7 +1,9 @@
+<% content_for(:title, '新規会員登録') %>
 <div class="row">
-  <h2>新規会員登録</h2>
-
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-horizontal" }) do |f| %>
+  <div class="col-xs-4 col-xs-offset-2"><h3>新規会員登録</h3></div>
+</div>
+<div class="row">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-horizontal h-adr" }) do |f| %>
     <%= render "layouts/error_messages", model: resource %>
 
     <div class="form-group">
@@ -13,7 +15,7 @@
     </div>
 
     <div class="form-group">
-      <%= f.label :first_name_kana, "ふりがな", class: "control-label col-xs-4" %>
+      <%= f.label :first_name_kana, "フリガナ", class: "control-label col-xs-4" %>
       <div class="col-xs-8 form-inline">
         <label>(セイ)</label>&nbsp;<%= f.text_field :first_name_kana, class: "form-control" %>
         <label>(メイ)</label>&nbsp;<%= f.text_field :family_name_kana, class: "form-control" %>
@@ -30,14 +32,15 @@
     <div class="form-group">
       <%= f.label :post_number, "郵便番号(ハイフンなし)", class: "control-label col-xs-4" %>
       <div class="col-xs-4">
-        <%= f.text_field :post_number, class: "form-control" %>
+        <%= f.text_field :post_number, class: "p-postal-code form-control" %>
       </div>
     </div>
 
     <div class="form-group">
       <%= f.label :address, "住所", class: "control-label col-xs-4" %>
+      <span class="p-country-name" style="display:none;">Japan</span>
       <div class="col-xs-5">
-        <%= f.text_field :address, class: "form-control" %>
+        <%= f.text_field :address, class: "p-region p-locality p-street-address p-extended-address form-control" %>
       </div>
     </div>
 

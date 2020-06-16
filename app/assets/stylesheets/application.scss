@@ -16,6 +16,12 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+/* エラー表示 */
+.field_with_errors {
+  display: contents;
+  @extend .has-error;
+}
+
 /* レイアウト全体 */
 header {
   color:white;
