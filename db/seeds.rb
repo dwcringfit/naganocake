@@ -11,3 +11,11 @@ Admin.create(
   email: 'test@test.com',
   password: 'password'
 )
+
+#最初から追加されているジャンル名
+Genre.create{
+	name: 'ケーキ'
+	name: 'プリン'
+	name: '焼き菓子'
+    name: 'キャンディ'
+}
