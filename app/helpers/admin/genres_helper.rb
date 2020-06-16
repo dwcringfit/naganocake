@@ -4,5 +4,6 @@ module Admin::GenresHelper
 			"有効"
 		else
 			"無効"
+		end
 	end
 end
