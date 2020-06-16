@@ -21,7 +21,11 @@
 					<td>
 						<%= @item.price %>
 					</td>
+
 					<%= form_for @cart_item do |f| %>
+
+                    <%= render "layouts/error_messages", resource: f.object %>
+
 					<%= f.hidden_field :item_id, value: @item.id %>
 					<td><%= f.select :item_count,options_for_select((1..10).to_a),include_blank: "個数選択" %></td>
 					<td><%= f.submit "購入する" %></td>

@@ -210,3 +210,6 @@ ja:
       context: 商品説明
       price: 商品価格
       is_sale: 販売ステータス
+    genre:
+      name: ジャンル名
+      is_valid: 有効もしくは無効

@@ -4,16 +4,7 @@
 
 <%= form_for(@item) do |f| %>
 
-<!-- エラーメッセージ表示 必要？-->
-<% if @item.errors.any? %>
-	<h3><%= @item.errors.count %>error occurrence</h3><!--エラーメッセ-->
-	<ul>
-		<% @item.errors.full_messages.each do |message| %>
-		<li><%= message %></li>
-		<% end %>
-	</ul>
-<% end %>
-<!-- エラーメッセージ表示-->
+<%= render "layouts/error_messages", resource:f.object  %>
 
 <div class="field">
 	<%= f.label :image,"商品イメージ" %>
