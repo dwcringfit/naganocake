@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
 
+  namespace :client do
+    get 'clients/show'
+    get 'clients/edit'
+    get 'clients/update'
+    get 'clients/confirm_cancel'
+    get 'clients/cancel'
+  end
   namespace :admin do
     get 'clients/index'
     get 'clients/show'
