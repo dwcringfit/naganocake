@@ -1,8 +1,8 @@
 <h1>ジャンル編集</h1>
 
-<%= render "layouts/error_messages", resource: genre %>
-
   <%= form_for @genre do |f| %>
+  <%= render "layouts/error_messages", resource: f.object %>
+
   	<%= f.label :list, "ジャンル" %>
   	<%= f.text_field :list %>
 
@@ -10,5 +10,5 @@
   	<%= f.label :is_valid, is_valid(f.is_valid) %>
 
 
-   <%= f.submit "編集を保存する" %>
+   <%= f.submit "編集を保存する",class: 'btn btn-primary btn-block' %>
  <%= end %>
