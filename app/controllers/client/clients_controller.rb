@@ -1,14 +1,13 @@
 class Client::ClientsController < Client::Base
+  before_action :set_client
+
   def show
-    @client = Client.find(params[:id])
   end
 
   def edit
-    @client = Client.find(params[:id])
   end
 
   def update
-    @client = Client.find(params[:id])
     if @client.update(client_params)
       redirect_to client_path(@client)
     else
@@ -17,15 +16,17 @@ class Client::ClientsController < Client::Base
   end
 
   def confirm_cancel
-    @client = Client.find(params[:id])
   end
 
   def cancel
-    @client = Client.find(params[:id])
     if @client.update(is_valid: false)
       sign_out current_client
     end
       redirect_to root_path
+  end
+
+  def set_client
+    @client = Client.find(params[:id])
   end
 
     private
