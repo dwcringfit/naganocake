@@ -1,0 +1,61 @@
+<div class="row">
+    <div class="col">
+        <h2 class="red-border px-3 pb-1">マイページ</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <p class="lead">登録情報
+        <%= link_to "編集する", edit_client_path(@client), class: "btn btn-primary" %>
+        <%= link_to "パスワードを変更する", edit_client_registration_path, class: "btn btn-primary" %>
+    </p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-4">
+        <table class="table table-striped table-bordered">
+            <tr>
+                <td>氏名</td>
+                <td>
+                    <%= @client.first_name %>
+                    <%= @client.family_name %>
+                </td>
+            </tr>
+
+            <tr>
+                <td>フリガナ</td>
+                <td>
+                    <%= @client.first_name_kana %>
+                    <%= @client.family_name_kana %>
+                </td>
+            </tr>
+
+            <tr>
+                <td>郵便番号</td>
+                <td><%= @client.post_number %></td>
+            </tr>
+
+            <tr>
+                <td>住所</td>
+                <td><%= @client.address %></td>
+            </tr>
+
+            <tr>
+                <td>電話番号</td>
+                <td><%= @client.tel %></td>
+            </tr>
+
+            <tr>
+                <td>メールアドレス</td>
+                <td><%= @client.email %></td>
+            </tr>
+        </table>
+        <p class="lead row">配送先
+        <%= link_to "一覧を見る", deliveries_path, class: "btn btn-primary" %>
+        </p>
+        <p class="lead row">注文履歴
+        <%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %>
+        </p>
+    </div>
