@@ -12,7 +12,7 @@ class Admin::GenresController < Admin::Base
 	     @genres = Genre.all
 	     redirect_to admin_genres_path
 	  else
-	     @genre = Genre.all
+	     @genres = Genre.all
 	     render 'index'
 	  end
   end

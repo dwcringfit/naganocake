@@ -1,17 +1,25 @@
-<h1>ジャンル編集</h1>
+<div class = "row">
+	<div class = "col-xs-7">
+       <h1>ジャンル編集</h1>
+         <br>
+         <br>
+         <%= form_for(@genre, url: admin_genre_path) do |f| %>
+         <%= render "layouts/error_messages", model: f.object %>
 
-  <%= form_for(@genre, url: admin_genre_path) do |f| %>
-  <%= render "layouts/error_messages", model: f.object %>
+  	     <%= f.label :name, "ジャンル" %>
+  	     <%= f.text_field :name %>
 
-  	<%= f.label :name, "ジャンル" %>
-  	<%= f.text_field :name %>
+   	     <%= f.radio_button :is_valid, true, checked: true %>
+  	     <%= f.label :is_valid, "有効", value: true %>
 
-  	<%= f.radio_button :is_valid, true, checked: true %>
-  	<%= f.label :is_valid, "有効", value: true %>
-
-    <%= f.radio_button :is_valid, false %>
-    <%= f.label :is_valid, "無効", value: false %>
-
-
-   <%= f.submit "編集を保存する",class: 'btn btn-primary btn-block' %>
- <% end %>
+         <%= f.radio_button :is_valid, false %>
+         <%= f.label :is_valid, "無効", value: false %>
+         <br>
+         <br>
+         <br>
+       <div class = "col-xs-5 pull-right">
+           <%= f.submit "編集を保存する",class: 'btn btn-primary btn-block' %>
+           <% end %>
+       </div>
+    </div>
+</div>
