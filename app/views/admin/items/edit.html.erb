@@ -1,0 +1,46 @@
+<div class = "row">
+   <div class="col-xs-8">
+     <h1>商品編集</h1>
+
+
+     <%= form_for(@item, url: admin_item_path(@item)) do |f| %>
+
+     <%= render "layouts/error_messages", model: f.object  %>
+
+     <div class="field">
+  	     <%= f.label :image,"商品イメージ" %>
+	     <%= f.attachment_field :image, class: "image" %>
+     </div>
+
+     <div class="field">
+	     <%= f.label :name,"商品名" %>
+	     <%= f.text_field :name, class: "name" %>
+     </div>
+
+     <div class="field">
+	     <%= f.label :context, "商品説明" %>
+	     <%= f.text_area :context, class: "context" %>
+     </div>
+
+     <div class="form-group">
+	     <%= f.label :genre_id, "ジャンル" %>
+	     <%= f.collection_select :genre_id, Genre.all, :id, :name, {include_blank: "選択してください"},{class: 'form-control', required: true} %>
+     </div>
+
+     <div class="field">
+	     <%= f.label :price, "税抜金額" %>
+	     <%= f.text_field :price, class: "price" %> 円
+     </div>
+
+
+     <div class="form-group">
+	     <%= f.label :is_sale, "販売ステータス" %>
+	     <%= f.select :is_sale, {"売り切れ": 0,"販売中": 1},{include_blank: "選択してください", selected: get_is_sale(@item.is_sale) },{class: 'form-control'} %>
+     </div>
+
+
+     <div class="col-xs-4">
+	     <%= f.submit "変更を保存", class: 'btn btn-primary btn-block' %>
+     </div>
+
+<% end %>
