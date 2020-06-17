@@ -6,6 +6,18 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+    models:
+      item: 商品
+      jenre: ジャンル
+    attributes:
+      item:
+        name: 商品名
+        context: 商品説明
+        price: 商品価格
+        is_sale: 販売ステータス
+      genre:
+        name: ジャンル名
+        is_valid: 有効もしくは無効
   date:
     abbr_day_names:
     - 日
@@ -210,3 +222,6 @@ ja:
       context: 商品説明
       price: 商品価格
       is_sale: 販売ステータス
+    genre:
+      name: ジャンル名
+      is_valid: 有効もしくは無効

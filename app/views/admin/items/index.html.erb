@@ -1,0 +1,32 @@
+<div class="row">
+	<div class = "col-xs-2 pull-right">
+	  <%= link_to "新規登録",new_admin_item_path %>
+    </div>
+	  <div class="col-xs-10">
+        <h2>商品一覧</h2>
+		<!--商品の一覧 -->
+	  	  <table class="table table-hover table-inverse">
+		 	  <thead>
+				  <tr>
+				  	  <th>ID</th>
+					  <th>商品名</th>
+					  <th>税抜価格</th>
+					  <th>ジャンル名</th>
+					  <th>販売ステータス</th>
+				  </tr>
+			  </thead>
+
+			  <tbody>
+				  <% @items.each do |item| %>
+				  <tr>
+					  <td><%= item.id %></td>
+					  <td><%= link_to item.name, admin_item_path(item), class: "item_#{item.id}" %></td>
+					  <td><%= item.price %></td>
+					  <td><%= item.genre.name %></td>
+					  <td><%= item.is_sale ? "販売中" : "売り切れ" %>
+				  </tr>
+				<% end %>
+			</tbody>
+		</table>
+    </div>
+</div>
