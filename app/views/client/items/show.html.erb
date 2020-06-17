@@ -4,7 +4,7 @@
 					<tr>
 						<td>
 							<% @genres.each do |genre| %>
-							<%= link_to genre.list, items_path, method: :get, genre_id: genre.id %>
+							<%= link_to genre.name, items_path, method: :get, genre_id: genre.id %>
 							<% end %>
 						</td>
 					</tr>
@@ -14,7 +14,7 @@
 		<table class="table">
 				<tr>
 					<td>
-						<%= attachment_image_tag(@item, :image, format: 'jpeg', size: '500x500', fallback: "no-image.jpg") %><br>
+						<%= attachment_image_tag(@item, :image, format: 'jpeg', size: '300x300', fallback: "no_image.jpg") %><br>
 						<%= @item.name %>
 					</td>
 					<td><%= @item.context %></td>
@@ -22,14 +22,15 @@
 						<%= @item_taxin %>
 					</td>
 
-					<%= form_for @cart_item do |f| %>
+                   <!-- 以下、カートへデータの引き渡しを行う  -->
+					<%= form_for(@cart_item, url: cart_items_path) do |f| %>
 
-                    <%= render "layouts/error_messages", resource: f.object %>
+                    <%= render "layouts/error_messages", model: f.object %>
 
 					<%= f.hidden_field :item_id, value: @item.id %>
 					<td><%= f.select :item_count,options_for_select((1..10).to_a),include_blank: "個数選択" %></td>
-					<td><%= f.submit "購入する" %></td>
-					<%= end %>
+					<td><%= f.submit "購入する", class: 'btn btn-primary btn-block' %></td>
+					<% end %>
 				</tr>
 			</table>
 

@@ -1,12 +1,12 @@
-<table class="table">
-				<tr>
-					<td>
-						<%= attachment_image_tag(@item, :image, format: 'jpeg', size: '500x500', fallback: "no_image.jpg") %>
-					</td>
-					<td>商品名  <%= @item.name %></td>
-					<td> 商品説明 <%= @item.context %></td>
-					<td>税込価格（税抜価格）<%= @item_taxin %> （ <%= @item.price %> ）</td>
-					<td>販売ステータス  <%= @item.is_sale ? "販売中" : "売り切れ" %></td>
-					<td><%= link_to "編集する",edit_admin_item_path(@item), class: "btn-sm btn-success edit_admin_item_#{@item.id}" %></td>
-				</tr>
-</table>
+<div class = "row">
+	<div class="col-xs-4">
+		<%= attachment_image_tag(@item, :image, format: 'jpeg', size: '300x300', fallback: "no_image.jpg") %>
+	</div>
+	<div class="col-xs-8">
+		 商品名  <%= @item.name %><br>
+	     商品説明 <%= @item.context %><br>
+         税込価格（税抜価格）     <%= @item_taxin %>円 （ <%= @item.price %>円 ）<br>
+	     販売ステータス  <%= @item.is_sale ? "販売中" : "売り切れ" %><br>
+	     <%= link_to "編集する",edit_admin_item_path(@item), class: "btn btn-success edit_admin_item_#{@item.id}" %><br>
+	</div>
+</div>

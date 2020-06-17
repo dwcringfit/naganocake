@@ -1,4 +1,5 @@
 module Admin::GenresHelper
+
 	def is_valid(valid)
 		if valid
 			"有効"
