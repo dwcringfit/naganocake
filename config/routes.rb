@@ -1,5 +1,19 @@
 Rails.application.routes.draw do
 
+  namespace :client do
+    get 'orders/thanks'
+    get 'orders/confirm'
+    get 'orders/index'
+    get 'orders/new'
+    get 'orders/create'
+    get 'orders/show'
+  end
+  get 'orders/thanks'
+  get 'orders/confirm'
+  get 'orders/index'
+  get 'orders/new'
+  get 'orders/create'
+  get 'orders/show'
   # 顧客用ルーティング
   scope module: :client do
 
