@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-<<<<<<< HEAD
+# <<<<<<< HEAD
   layout :layout_by_resource
   before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -65,7 +65,7 @@ class ApplicationController < ActionController::Base
     ]
     devise_parameter_sanitizer.permit(:sign_up, keys: attribute)
   end
-=======
+# =======
 	
->>>>>>> 00d6e5476c21e950e684f1ecc371eadcdad50420
+# >>>>>>> 00d6e5476c21e950e684f1ecc371eadcdad50420
 end

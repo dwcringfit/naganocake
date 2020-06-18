@@ -73,3 +73,5 @@ gem "refile-mini_magick"
 gem 'kaminari'
 gem 'ransack'
 gem 'autonumeric-rails'
+gem 'hirb'
+gem 'hirb-unicode'
