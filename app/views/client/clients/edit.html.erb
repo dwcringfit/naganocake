@@ -8,6 +8,8 @@
     <div class="offset-3 col-6">
 
         <%= form_for(@client) do |f| %>
+        <%= render "layouts/error_messages", model: f.object  %>
+
         <div class="form-group row">
             <%= f.label :氏名, class: "col-sm-2" %>
             <%= f.text_field :first_name, class: "col text-center" %>

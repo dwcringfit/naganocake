@@ -1,5 +1,5 @@
 <div class="row">
-    <h2><%= @client.first_name %> <%= @client.family_name %>さんの会員詳細</h2>
+    <h2><%= current_client.get_full_name %>さんの会員詳細</h2>
     <div class="row mt-3">
         <div class="offset-sm-1 col-sm-7">
             <table class="table table-borderless">
@@ -15,7 +15,7 @@
                         </td>
                     </tr>
 
-                    <tr>
+                    <tr>ç
                         <td>氏名</td>
                         <td><%= @client.first_name %>
                             <%= @client.family_name %></td>
