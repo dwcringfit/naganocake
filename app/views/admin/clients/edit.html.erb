@@ -10,6 +10,7 @@
 
 <div class="row mt-3 flex-column align-items-center">
     <%= form_for (@client), url: admin_client_path(@client) do |f| %>
+    <%= render "layouts/error_messages", model: f.object  %>
 
     <div class="form-group row">
         <%= f.label :会員ID, class: "col-sm-2" %>
