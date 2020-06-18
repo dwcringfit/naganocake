@@ -12,13 +12,10 @@ Rails.application.routes.draw do
       registrations: 'client/clients/registrations',
       passwords: 'client/clients/passwords'
     }
-    resources :clients, only: [:show, :edit, :update] do
+    resources :clients, only: [:show, :edit, :update] 
       # 退会処理
-      collection do
-        get :cancel, to: 'clients#confirm_cancel'
-        post :cancel, to: 'clients#cancel'
-      end
-    end
+      get '/clients/:id/confirm/cancel' to: 'clients#confirm_cancel', as:"cancel_clients"
+      patch '/clients/:id/confirm/cancel' to: 'clients#cancel'
 
     # 商品
     resources :items, only: [:index, :show]
