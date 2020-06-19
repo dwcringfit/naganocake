@@ -1,6 +1,8 @@
 class Client::CartItemsController < Client::Base
-
-    def index
+  # 注文共通処理を読込
+	include CommonOrder
+		
+  def index
 		@cart_items = current_client.cart_items
 	end
 
