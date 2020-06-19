@@ -9,19 +9,19 @@
         <table class="table">
             <tr>
                 <th>購入者</th>
-                <th></th>
+                <th><%= link_to @order.client(first_name, family_name), admin_client_path(@order.id) %></th>
             </tr>
             <tr>
                 <th>配送先</th>
-                <th></th>
+                <th><%= @order.post_number, @order.address, @order.client(first_name, family_name) %></th>
             </tr>
             <tr>
                 <th>支払方法</th>
-                <th></th>
+                <th><%= @order.payment_method %></th>
             </tr>
             <tr>
                 <th>注文ステータス</th>
-                <th></th>
+                <th><%= @order.status %></th>
             </tr>
         </table>
     </div>
@@ -40,13 +40,13 @@
                 </tr>
             </thead>
             <tbody>
-                <%= %>
+                <%= @orders.each do |orders| %>
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><%= orders.item.name %></td> 
+                        <td><%= orders.price %></td> 
+                        <td><%= orders.item_count %></td>
+                        <td><%= orders.price * item_count %></td>
+                        <td><%= orders.production_status, class: ""%><%= link_to '更新', url: , method: :update, class: "btn btn-primary" %></td>
                     </tr>
                 <%= %>
             </tbody>

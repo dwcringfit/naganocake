@@ -21,11 +21,10 @@ Admin.create(
 	Genre.create( name: genre_name, is_valid: true)
 }
 
-10.times do |i|
-	i += 1
+1..10.times do |i|
 	Client.create(
 		email: "test#{i}@test.com",
- 		encrypted_password: "testtest#{i}",
+ 		password: "testtest#{i}",
     	first_name: "太郎#{i}",
     	family_name: "日本#{i}",
     	first_name_kana: "タロウ#{i}",
