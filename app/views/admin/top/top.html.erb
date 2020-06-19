@@ -1,2 +1,7 @@
 <%= render "layouts/flash" %>
-<h1>管理者用トップページです。</h1>
+<div class="rou">
+  <h1>管理者画面</h1>
+  <div class="col-xs-6 col-xs-offset-3 text-left">
+    <p class="lead">本日の注文件数： <%= link_to "#{@orders.count} 件", admin_orders_path %></p>
+  </div>
+</div>
