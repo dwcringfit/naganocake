@@ -1,8 +1,16 @@
+<% if flash[:cartitem_update_error] %>
+    <div class = "row">
+	    <div class="alert alert-danger" role="alert">
+		    <%= flash[:cartitem_update_error] %>
+	    </div>
+　　</div>
+<% end %>
+
 <div class="row">
-	<div class="col-md-3">
+	<div class="col-md-4">
 	    <h3>ショッピングカート</h3>
 	</div>
-	<div class="col-md-offset-7 col-md-2">
+	<div class="col-md-offset-6 col-md-2">
 	    <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, data: {confirm: "本当にカートを空にしてもよろしいですか？"}, class: "btn btn-danger" %>
     </div>
 </div>
@@ -20,7 +28,6 @@
 	    </thead>
 		<tbody>
 			<% if @cart_items.present? %>
-		        <% @sum = 0 %>
 		        <% @cart_items.each do |cart_item| %>
 		            <tr>
 			            <td><%= attachment_image_tag(@item, :image, format: 'jpeg', size: '100x100', fallback: "no_image.jpg") %>
@@ -29,10 +36,9 @@
 			            <td><%= form_for(cart_item) do |f| %>
 			                <%= f.number_field :item_count, placeholder: "#{cart_item.item_count}" %>
 			                <%= f.submit "変更" , class: "btn btn-primary" %></td>
-			            <td><%= cart_item.item.price_tax_included * cart_item.item_count %></td>
+			            <td></td>
 			            <td><%= link_to "削除する", cart_item_path(cart_item.item_id), method: :delete, class: "btn btn-danger" %></td>
 		            </tr>
-		            <% @sum += cart_item.item.price_tax_included * cart_item.item_count %>
 		        <% end %>
 		        <% end %>
 		    <% end %>
@@ -42,7 +48,7 @@
 
 <div class="row">
 	<%= link_to "買い物を続ける", root_path, class: "btn btn-primary" %>
-	<span>合計金額  <%= @sum %></span>
+	<span>合計金額</span>
 </div>
 
 
