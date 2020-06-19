@@ -14,10 +14,8 @@ Rails.application.routes.draw do
     }
     resources :clients, only: [:show, :edit, :update] do
       # 退会処理
-      collection do
-        get :cancel, to: 'clients#confirm_cancel'
-        post :cancel, to: 'clients#cancel'
-      end
+      get '/clients/:id/confirm/cancel', to: 'clients#confirm_cancel', as:"cancel_clients"
+      patch '/clients/:id/confirm/cancel', to: 'clients#cancel'
     end
 
     # 商品

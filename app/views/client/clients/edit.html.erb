@@ -8,6 +8,8 @@
     <div class="offset-3 col-6">
 
         <%= form_for(@client) do |f| %>
+        <%= render "layouts/error_messages", model: f.object  %>
+
         <div class="form-group row">
             <%= f.label :氏名, class: "col-sm-2" %>
             <%= f.text_field :first_name, class: "col text-center" %>
@@ -43,7 +45,7 @@
 
         <div class="row">
             <%= f.submit "編集内容を保存する", class: "btn btn-primary" %>
-            <%= link_to "退会する" , cancel_clients_path(@client), class: "btn btn-danger" %>
+            <%= link_to "退会する" , client_cancel_clients_path(@client), class: "btn btn-danger" %>
         </div>
         <% end %>
     </div>
