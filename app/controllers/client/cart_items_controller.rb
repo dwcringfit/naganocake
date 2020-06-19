@@ -14,20 +14,32 @@ class Client::CartItemsController < Client::Base
 		   @cart_item.save
 		   redirect_to cart_items_path
 		else
-		   @item = Item.find(params[:cart_item][:item_id])
-           @genres = Genre.all
-           @cart_item = CartItem.new
-		   render "client/items/show"
+		      flash[:cartitem_create_error] = "商品が売り切れています。"
+		      redirect_to item_path(@item)
 		end
 	end
 
 	def update
+		cart_item = CartItem.find(params[:item_id])
+
+		if cart_item.update(cart_item_params)
+		   redirect_to cart_items_path
+		else
+		   @cart_items = current_client.cart_items
+           render "index"
+        end
 	end
 
 	def destroy
+		cart_item = current_client.cart_items.find_by(item_id: params[:item_id])
+		cart_item.destroy
+		redirect_to cart_items_path
 	end
 
 	def destroy_all
+		@cart_items = current_client.cart_items
+		@cart_items.destroy_all
+		redirect_to cart_items_path
 	end
 
 	private

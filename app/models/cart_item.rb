@@ -3,6 +3,6 @@ class CartItem < ApplicationRecord
 	belongs_to :client
     belongs_to :item
 
-    attachment :image
+    validates :item_count, presence: true, numericality: { greater_than: 1 }
 
 end

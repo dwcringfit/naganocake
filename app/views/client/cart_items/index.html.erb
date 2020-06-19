@@ -1,6 +1,10 @@
 <div class="row">
-	<h3>ショッピングカート</h3>
-	<span><%= link_to "カートを空にする", cart_items_path(@cart_items), method: :delete, data: {confirm: "本当にカートを空にしてもよろしいですか？"}, class: "btn btn-danger" %></span>
+	<div class="col-md-3">
+	    <h3>ショッピングカート</h3>
+	</div>
+	<div class="col-md-offset-7 col-md-2">
+	    <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, data: {confirm: "本当にカートを空にしてもよろしいですか？"}, class: "btn btn-danger" %>
+    </div>
 </div>
 
 <div class="row">
@@ -15,18 +19,18 @@
 		    </tr>
 	    </thead>
 		<tbody>
-			<% if @cart_items %>
+			<% if @cart_items.present? %>
 		        <% @sum = 0 %>
 		        <% @cart_items.each do |cart_item| %>
 		            <tr>
 			            <td><%= attachment_image_tag(@item, :image, format: 'jpeg', size: '100x100', fallback: "no_image.jpg") %>
 			                <%= cart_item.item.name %></td>
 			            <td><%= cart_item.item.price_tax_included %></td>
-			            <td><% form_for(cart_item, url: cart_items_path) do |f| %>
+			            <td><%= form_for(cart_item) do |f| %>
 			                <%= f.number_field :item_count, placeholder: "#{cart_item.item_count}" %>
 			                <%= f.submit "変更" , class: "btn btn-primary" %></td>
-			            <td><%= cart_item.item.price * cart_item.item_count %></td>
-			            <td><%= link_to "削除する", cart_items_path(cart_item.item_id), method: :delete, class: "btn btn-danger" %></td>
+			            <td><%= cart_item.item.price_tax_included * cart_item.item_count %></td>
+			            <td><%= link_to "削除する", cart_item_path(cart_item.item_id), method: :delete, class: "btn btn-danger" %></td>
 		            </tr>
 		            <% @sum += cart_item.item.price_tax_included * cart_item.item_count %>
 		        <% end %>
@@ -41,8 +45,12 @@
 	<span>合計金額  <%= @sum %></span>
 </div>
 
+
 <div class="row">
 	<div class="col-md-4 col-md-offset-4">
-        <%= link_to "情報入力に進む", new_order_path, class: "btn btn-success btn-block" %>
+	    <% if @cart_items %>
+            <%= link_to "情報入力に進む", new_order_path, class: "btn btn-success btn-block" %>
+        <% end %>
     </div>
 </div>
+
