@@ -22,9 +22,11 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
 
     # カート
-    resources :cart_items, only: [:index, :create, :update, :destroy], param: :item_id
-    delete :cart_items, to: 'cart_items#destroy_all'
-
+    resources :cart_items, only: [:index, :create, :update, :destroy], param: :item_id do
+      collection do
+         delete 'destroy_all'
+      end
+    end
     # 注文
     resources :orders, only: [:new, :index, :create, :show] do
       collection do
