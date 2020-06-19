@@ -2,7 +2,11 @@ class Client < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  
+
+  has_many :cart_items, dependent: :destroy
+  has_many :items, through: :cart_item, dependent: :destroy
+  has_many :deliveries, dependent: :destroy
+
   # バリデーション処理
   validates :first_name, presence: true
   validates :family_name, presence: true
@@ -26,7 +30,7 @@ class Client < ApplicationRecord
   def get_full_name
     self.first_name + self.family_name
   end
-  
+
   # フルネームを取得(カナ)
   def get_full_name_kana
     self.first_name_kana + self.family_name_kana

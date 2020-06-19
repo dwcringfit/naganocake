@@ -1,12 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :client do
-    get 'deliveries/index'
-    get 'deliveries/create'
-    get 'deliveries/edit'
-    get 'deliveries/update'
-    get 'deliveries/destroy'
-  end
   # 顧客用ルーティング
   scope module: :client do
 
@@ -29,9 +22,11 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
 
     # カート
-    resources :cart_items, only: [:index, :create, :update, :destroy], param: :item_id
-    delete :cart_items, to: 'cart_items#destroy_all'
-
+    resources :cart_items, only: [:index, :create, :update, :destroy], param: :item_id do
+      collection do
+         delete 'destroy_all'
+      end
+    end
     # 注文
     resources :orders, only: [:new, :index, :create, :show] do
       collection do
@@ -41,7 +36,7 @@ Rails.application.routes.draw do
     end
 
     # 配送先
-    resources :deliveries, except: [:show]
+    resources :deliveries, except: [:new, :show]
   end
 
   # 管理者ユーザー

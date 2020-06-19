@@ -3,23 +3,28 @@
 </div>
 
 <div class="row">
-    <%= form_for(@delivery) do |f| %>
-    <div class="from-group row">
+    <%= form_for(@delivery_new) do |f| %>
+    <div class="form-group row">
         <%= f.label :郵便番号ハイフンなし , class: "col-sm-2" %>
-        <%= f.text_field :post_number, class: "form-control" %>
+        <%= f.text_field :post_number, class: "col" %>
     </div>
 
-    <div class="from-group row">
+    <div class="form-group row">
         <%= f.label :住所 , class: "col-sm-2" %>
-        <%= f.text_field :address, class: "form-control" %>
+        <%= f.text_field :address, class: "col" %>
     </div>
 
-    <div class="from-group row">
+    <div class="form-group row">
         <%= f.label :宛名 , class: "col-sm-2" %>
-        <%= f.text_field :receiver, class: "form-control" %>
+        <%= f.text_field :receiver, class: "col" %>
+    </div>
+    <div class="row">
+        <%= f.submit "登録する", class: "btn btn-primary" %>
     </div>
     <% end %>
+</div>
 
+<div class="row">
     <table class="row table table-bordered">
         <thead>
             <tr>
@@ -32,12 +37,12 @@
         <tbody>
             <% @deliveries.each do |delivery| %>
             <tr>
-                <td><%= deliverie.post_number %></td>
-                <td><%= deliverie.address %></td>
-                <td><%= deliverie.receiver %></td>
+                <td><%= delivery.post_number %></td>
+                <td><%= delivery.address %></td>
+                <td><%= delivery.receiver %></td>
                 <td>
-                    <%= link_to "編集する", edit_delivery_path(deliverie),class: "btn btn-primary" %>
-                    <%= link_to "削除する", delivery_path(deliverie),method: delete ,date:{confirm: '本当に削除しますか？'}, class: "btn btn-danger" %>
+                    <%= link_to "編集する", edit_delivery_path(delivery), class: "btn btn-primary" %>
+                    <%= link_to "削除する", delivery_path(delivery), method: :delete ,data: { confirm: '本当に削除しますか?' }, class: "btn btn-danger" %>
                 </td>
             </tr>
             <% end %>
