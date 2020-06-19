@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require jquery
 //= require bootstrap-sprockets
+//= require autonumeric
 //= require_tree .
