@@ -15,6 +15,7 @@ class Client::ItemsController < Client::Base
   def show
     @item = Item.find(params[:id])
     @genres = Genre.all
+    @cart_item = CartItem.new
   end
 
 
