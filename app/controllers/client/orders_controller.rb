@@ -6,6 +6,7 @@ class Client::OrdersController < Client::Base
   end
 
   def index
+    @orders = Orders.all
   end
 
   def new
@@ -15,5 +16,7 @@ class Client::OrdersController < Client::Base
   end
 
   def show
+    @order = Order.find(params[:id])
   end
+  
 end

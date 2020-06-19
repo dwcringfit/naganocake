@@ -5,7 +5,8 @@ class Client < ApplicationRecord
 
   has_many :cart_items, dependent: :destroy
   has_many :items, through: :cart_item, dependent: :destroy
-
+  has_many :orders, dependent: :destroy
+  
   # バリデーション処理
   # validates :first_name, presence: true
   # validates :family_name, presence: true
@@ -15,7 +16,7 @@ class Client < ApplicationRecord
   # validates :address, presence: true, length: {maximum:250}
   # validates :tel, presence: true, format: { with: /\A\d{10}$|^\d{11}\z/ }
 
-  has_many :orders, dependent: :destroy
+  
 
   # 退会済み会員の場合はエラー
   def active_for_authentication?

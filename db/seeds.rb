@@ -34,3 +34,33 @@ Admin.create(
     	tel: "0900909090#{i}"
 	)
 end
+
+1..10.times do |i|
+	Order.create(
+		status: "1",
+		payment_method: "1",
+		postage: "800#{i}",
+		total_fee: "100000#{i}",
+		address: "配送先住所#{i}",
+		post_number: "配送先郵便番号#{i}",
+		receiver: "宛名#{i}"
+	)
+end
+
+1..10.times do |i|
+	OrderItem.create(
+		item_count: "1#{i}",
+		price: "700",
+		production_status: "1"
+	)
+end
+
+1..10.times do |i|
+	Item.create(
+		name: "cake#{i}",
+		context: "caption#{i}",
+		image_id: "cake.jpg",
+		price: "900",
+		is_sale: "true"
+	)
+end
