@@ -20,3 +20,18 @@ Admin.create(
 ].each { |genre_name|
 	Genre.create( name: genre_name, is_valid: true)
 }
+
+10.times do |i|
+	i += 1
+	Client.create(
+		email: "test#{i}@test.com",
+ 		encrypted_password: "testtest#{i}",
+    	first_name: "太郎#{i}",
+    	family_name: "日本#{i}",
+    	first_name_kana: "タロウ#{i}",
+    	family_name_kana: "ニホン#{i}",
+    	post_number: "999999999#{i}",
+    	address: "大阪#{i}",
+    	tel: "0900909090#{i}"
+	)
+end

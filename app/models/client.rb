@@ -12,6 +12,8 @@ class Client < ApplicationRecord
   validates :address, presence: true, length: {maximum:250}
   validates :tel, presence: true, format: { with: /\A\d{10}$|^\d{11}\z/ }
 
+  has_many :orders, dependent: :destroy
+
   # 退会済み会員の場合はエラー
   def active_for_authentication?
     super && self.is_valid

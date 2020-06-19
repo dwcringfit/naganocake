@@ -9,7 +9,7 @@ class Item < ApplicationRecord
 	validates :context, presence: true
 	validates :price, presence: true
 
-  attachment :image
+    attachment :image
 
 	# 税込価格を取得
 	def price_tax_included(tax: 1.08)
