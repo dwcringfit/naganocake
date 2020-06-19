@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
 
+  namespace :client do
+    get 'deliveries/index'
+    get 'deliveries/create'
+    get 'deliveries/edit'
+    get 'deliveries/update'
+    get 'deliveries/destroy'
+  end
   # 顧客用ルーティング
   scope module: :client do
 
