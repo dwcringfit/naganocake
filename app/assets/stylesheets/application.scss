@@ -22,6 +22,22 @@
   @extend .has-error;
 }
 
+*{
+  font-family: 'Helvetica Neue','Ariel','Hiragino Kaku Gothic ProN','Yu Gothic','ＭＳ Gothic','sans-serif';
+  color: #666 ;
+}
+
+a {
+   text-decoration: none ;
+   color: #866629 ;
+   }
+
+a:visited {
+   color: #866629 ;
+}
+
+
+
 /* レイアウト全体 */
 header {
   color:white;

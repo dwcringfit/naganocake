@@ -10,7 +10,7 @@
 	 <div class = "col-xs-6">
 			 <%= @item.name %><br>
 			 <%= @item.context %><br>
-			 <%= @item_taxin %><br>
+			 <%= @item.price_tax_included %><br>
 
                    <!-- 以下、カートへデータの引き渡しを行う  -->
 					<%= form_for(@cart_item, url: cart_items_path) do |f| %>
