@@ -5,6 +5,7 @@ class Client < ApplicationRecord
 
   has_many :cart_items, dependent: :destroy
   has_many :items, through: :cart_item, dependent: :destroy
+  has_many :deliveries, dependent: :destroy
 
   # バリデーション処理
   validates :first_name, presence: true
