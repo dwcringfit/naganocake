@@ -36,7 +36,7 @@ Rails.application.routes.draw do
     end
 
     # 配送先
-    resources :deliveries, except: [:show]
+    resources :deliveries, except: [:new, :show]
   end
 
   # 管理者ユーザー
