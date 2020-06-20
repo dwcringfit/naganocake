@@ -4,6 +4,7 @@ class Client::CartItemsController < Client::Base
 		
   def index
 		@cart_items = current_client.cart_items
+		@item_total_amount = CommonOrder.calc_item_total_amount(@cart_items)
 	end
 
 	def create
