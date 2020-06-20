@@ -11,13 +11,16 @@
                 </tr>
             </thead>
             <tbody>
-                <% @orders.each do |order| %>
-                    <tr>
-                        <td><%= link_to order.created_today, admin_order_path(order.id) %></td>
-                        <td><%= order.client.(first_name, family_name) %></td>
-                        <td><%= order.order_item.item_count %></td>
-                        <td><%= order.status %></td>
-                    </tr>
+                <% if @orders.any? %>
+                    <% @orders.each do |order| %>
+                        <tr>
+                            <td><%= link_to "l order.created_at", admin_order_path(order) %></td>
+                            <td><%= order.client.get_full_name %></td>
+                            <td><%= order.order_item.item_count %></td>
+                            <td><%= order.status %></td>
+                        </tr>
+                    <% end %>
+                <% end %>
             </tbody>
         </table>
     </div>

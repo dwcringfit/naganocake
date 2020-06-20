@@ -18,6 +18,10 @@ class Admin::OrdersController < Admin::Base
     private
     def order_params
         params.require(:order).permit(:status)
+    end
+        
+    def order_item_params
         params.require(:order_item).permit(:production_status)
     end
+
 end

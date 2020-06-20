@@ -36,35 +36,36 @@ Admin.create(
 	)
 end
 
-1..10.times do |i|
-	Order.create(
-		status: "1",
-		payment_method: "1",
-		postage: "800#{i}",
-		total_fee: "100000#{i}",
-		address: "配送先住所#{i}",
-		post_number: "配送先郵便番号#{i}",
-		receiver: "宛名#{i}"
+	Order.create!(
+		client_id: 1,
+		status: 1,
+		payment_method: 1,
+		postage: 800,
+		total_fee: 1000,
+		address: "配送先住所",
+		post_number: "配送先郵便番号",
+		receiver: "宛名"
 	)
-end
 
-1..10.times do |i|
-	OrderItem.create(
-		item_count: "1#{i}",
-		price: "700",
-		production_status: "1"
-	)
-end
 
-1..10.times do |i|
-	Item.create(
-		name: "cake#{i}",
-		context: "caption#{i}",
-		image_id: "cake.jpg",
-		price: "900",
-		is_sale: "true"
+	OrderItem.create!(
+		order_id: 1,
+		item_id: 1,
+		item_count: 1,
+		price: 700,
+		production_status: 1
 	)
-end
+
+
+# 1..10.times do |i|
+	Item.create!(
+		genre_id: 1,
+		name: "cake",
+		context: "caption",
+		price: 900,
+		is_sale: true
+	)
+# end
 
 # Client.create(
 # 	is_valid: "true",

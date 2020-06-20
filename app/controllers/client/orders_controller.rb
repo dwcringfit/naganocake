@@ -6,7 +6,7 @@ class Client::OrdersController < Client::Base
   end
 
   def index
-    @orders = Orders.all
+    @orders = Order.all
   end
 
   def new
