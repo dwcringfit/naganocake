@@ -1,3 +1,17 @@
 // Place all the styles related to the client/items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+ul {
+  list-style: none;
+  float: left;
+  padding-bottom: 20px;
+  }
+
+li {
+	padding-bottom: 10px;
+}
+
+.genre-margin {
+	margin-top: 85px;
+}
