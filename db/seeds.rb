@@ -37,9 +37,9 @@ Admin.create(
 end
 
 	Order.create!(
-		client_id: 1,
-		status: 1,
-		payment_method: 1,
+		client_id: 2,
+		status: 2,
+		payment_method: 2,
 		postage: 800,
 		total_fee: 1000,
 		address: "配送先住所",
@@ -49,17 +49,17 @@ end
 
 
 	OrderItem.create!(
-		order_id: 1,
-		item_id: 1,
-		item_count: 1,
+		order_id: 2,
+		item_id: 2,
+		item_count: 2,
 		price: 700,
-		production_status: 1
+		production_status: 2
 	)
 
 
 # 1..10.times do |i|
 	Item.create!(
-		genre_id: 1,
+		genre_id: 2,
 		name: "cake",
 		context: "caption",
 		price: 900,
