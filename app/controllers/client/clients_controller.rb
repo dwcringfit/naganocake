@@ -25,13 +25,13 @@ class Client::ClientsController < Client::Base
       redirect_to root_path
   end
 
-  def set_client
-    @client = Client.find(params[:id])
-  end
-
     private
     def client_params
       params.require(:client).permit(:is_valid, :first_name, :family_name, :first_name_kana, :family_name_kana, :tel, :email, :password, :post_number, :address)
+    end
+
+    def set_client
+      @client = Client.find(params[:id])
     end
 
     def ensure_correct_client
