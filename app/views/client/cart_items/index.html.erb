@@ -36,7 +36,7 @@
 			            <td><%= form_for(cart_item) do |f| %>
 			                <%= f.number_field :item_count, placeholder: "#{cart_item.item_count}" %>
 			                <%= f.submit "変更" , class: "btn btn-primary" %></td>
-			            <td></td>
+			            <td><%= cart_item.subtotal %></td>
 			            <td><%= link_to "削除する", cart_item_path(cart_item.item_id), method: :delete, class: "btn btn-danger" %></td>
 		            </tr>
 		        <% end %>
@@ -50,11 +50,11 @@
 	<div class="col-md-3">
 	    <%= link_to "買い物を続ける", root_path, class: "btn btn-primary" %>
     </div>
-    <div class="col-md-offset-6 col-md-2">
+    <div class="item_total_amount col-md-offset-6 col-md-2">
 	    <p>合計金額</p>
     </div>
-    <div class="col-md-1">
-    	<p></p>
+    <div class="item_total_amount col-md-1">
+    	<p><%= @item_total_amount %></p>
     </div>
 </div>
 
