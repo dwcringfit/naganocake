@@ -1,5 +1,6 @@
 class Client::DeliveriesController < Client::Base
 
+  before_action :set_delivery,only: [:update, :destroy]
 
   def index
     @delivery_new = Delivery.new
@@ -23,19 +24,24 @@ class Client::DeliveriesController < Client::Base
   end
 
   def update
-    delivery = Delivery.find(params[:id])
-    delivery.update(delivery_params)
-    redirect_to deliveries_path
+    if @delivery.update(delivery_params)
+      redirect_to deliveries_path
+    else
+      render 'edit'
+    end
   end
 
   def destroy
-    delivery = Delivery.find(params[:id])
-    delivery.destroy
+    @delivery.destroy
     redirect_to deliveries_path
   end
 
   private
   def delivery_params
     params.require(:delivery).permit(:receiver, :post_number, :address)
+  end
+
+  def set_delivery
+    @delivery = Delivery.find(params[:id])
   end
 end

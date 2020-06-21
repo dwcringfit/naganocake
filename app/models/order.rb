@@ -5,9 +5,6 @@ class Order < ApplicationRecord
 
   belongs_to :client
 
-  # 今日登録された情報を抽出
-  scope :created_today, -> { where( "created_at >= ?", Time.zone.now.beginning_of_day)}
-
   def all_shipping_info
       self.post_number + self.address + self.receiver
   end

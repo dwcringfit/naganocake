@@ -5,13 +5,13 @@ class Item < ApplicationRecord
 	has_many :cart_item, dependent: :destroy
 	has_many :clients, through: :cart_item, dependent: :destroy
 
-	# belongs_to :genre
+	belongs_to :genre
 
-	# validates :name, presence: true, uniqueness: true
-	# validates :context, presence: true
-	# validates :price, presence: true, numericality: { only_integer: true,
-    # greater_than: 0 }
-	# validates :is_sale, inclusion: { in: [true, false] }
+	validates :name, presence: true, uniqueness: true
+	validates :context, presence: true
+	validates :price, presence: true, numericality: { only_integer: true,
+    greater_than: 0 }
+	validates :is_sale, inclusion: { in: [true, false] }
 
     attachment :image
 

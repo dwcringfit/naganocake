@@ -14,8 +14,7 @@ before_action :set_client, only:[:show, :edit, :update]
     if @client.update(client_params)
       redirect_to admin_client_path
     else
-      flash[:client_updated_error] = "会員情報が正常に保存されませんでした。"
-      redirect_to edit_admin_client_path(@client)
+      render 'edit'
     end
   end
 
