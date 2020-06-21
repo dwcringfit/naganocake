@@ -56,6 +56,7 @@ Rails.application.routes.draw do
 
     # 注文履歴
     resources :orders, except: [:create, :edit, :destroy] do
+      
       # 注文商品
       resources :order_items, only: :update
     end

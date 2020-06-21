@@ -6,8 +6,10 @@ class Admin::OrdersController < Admin::Base
 
     def show
         @order = Order.find(params[:id])
-        @orders = OrderItem.find(params[:id])
+        @order_items = @order.order_items
+        @order_price = @order.order_items.find_by(order_id: params[:id])
     end
+
 
     def update
         @order = Order.find(params[:id])

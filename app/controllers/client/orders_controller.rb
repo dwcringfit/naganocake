@@ -17,6 +17,8 @@ class Client::OrdersController < Client::Base
 
   def show
     @order = Order.find(params[:id])
+    @order_items = @order.order_items
+    @order_price = @order.order_items.find_by(order_id: params[:id])
   end
   
 end

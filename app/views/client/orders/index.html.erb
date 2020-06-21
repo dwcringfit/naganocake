@@ -6,9 +6,9 @@
 
 <div class="row">
     <div class="col-xs-offset-1 col-xs10">
-        <table class="table table-hover">
+        <table class="table table-hover table-bordered">
             <thead>
-                <tr class="table-active">
+                <tr class="active">
                     <th>注文日</th>
                     <th>配送先</th>
                     <th>注文商品</th>
@@ -22,9 +22,9 @@
                     <% @orders.each do |order| %>
                         <tr>
                             <td><%= l order.created_at %></td>
-                            <td><%= order.(post_number, address, receiver) %></td>
-                            <td><%= order.item.name %></td>
-                            <td><%= order.fee_including_postage %></td>
+                            <td><%= order.all_shipping_info %></td>
+                            <td><%= order.items.name %></td>
+                            <td><%= order.total_fee %></td>
                             <td><%= order.status %></td>
                             <td><%= link_to '表示する', order_path(order), class: "btn btn-primary" %></td>
                         </tr>

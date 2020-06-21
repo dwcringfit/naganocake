@@ -9,11 +9,11 @@
         <table class="table">
             <tr>
                 <th>購入者</th>
-                <th><%= link_to @order.client.(first_name, family_name), admin_client_path(@order.id) %></th>
+                <th><%= link_to @order.client.get_full_name, admin_client_path(@order.id) %></th>
             </tr>
             <tr>
                 <th>配送先</th>
-                <th><%= @order.post_number, @order.address, @order.client(first_name, family_name) %></th>
+                <th><%= @order.all_shipping_info %></th>
             </tr>
             <tr>
                 <th>支払方法</th>
@@ -22,14 +22,15 @@
             <tr>
                 <th>注文ステータス</th>
                 <th>
-                    <%= form_with(model: order, local: true) do |f| %>
-                        <div class="dropdown">
-                            <%= f.label :status, '入金待ち', class: 'data-toggle="dropdown"'%>
+                    <%= form_with(model: @order, local: true) do |f| %>
+                        <div class="dropdown col-xs-4">
+                            <%= f.label :status, '入金待ち', class: 'data-toggle="dropdown"' %>
                        </div>
-                       <div class="dropdown-menue">
+                       <div class="dropdown-menue col-xs-5">
                             <%= f.select :status, {'入金待ち': 1, '入金確認': 2, '製作中': 3, '発送準備中': 4, '発送済み': 5}, { include_blank: '選択してください'}, { class: 'form-control', required: true } %>
                         </div>
-                            <%= f.submit '更新', class: 'btn btn-primary' %>       
+                            <%= f.submit '更新', class: 'btn btn-primary' %>    
+                        <% end %>   
                 </th>
             </tr>
         </table>
@@ -49,24 +50,25 @@
                 </tr>
             </thead>
             <tbody>
-                <%= @orders.each do |orders| %>
+                <% @order_items.each do |order_item| %>
                     <tr>
-                        <td><%= orders.item.name %></td> 
-                        <td><%= orders.price %></td> 
-                        <td><%= orders.item_count %></td>
-                        <td><%= orders.price * item_count %></td>
+                        <td><%= order_item.item.name %></td> 
+                        <td><%= order_item.price  %></td>
+                        <td><%= order_item.item_count %></td>
+                        <td><%= order_item.subtotal %></td>
                         <td>
-                            <%= form_with(model: order_item, local: true) do |f| %>
-                                <div class="dropdown">
-                                    <%= f.label :production_status, '入金待ち', class: 'data-toggle="dropdown"'%>
-                                </div>
-                                <div class="dropdown-menue">
-                                    <%= f.select :production_status, {'着手不可': 1, '制作待ち': 2, '製作中': 3, '制作完了': 4}, { include_blank: '選択してください'}, { class: 'form-control', required: true } %>
-                                </div>
-                                    <%= f.submit '更新', class: 'btn btn-primary' %>
+                            <%# <%= form_with(model: order_item_path, local: true) do |f| %> %>
+                                <%# <div class="dropdown"> %>
+                                    <%# <%= f.label :production_status, '入金待ち', class: 'data-toggle="dropdown"'%> %>
+                                <%# </div> %>
+                                <%# <div class="dropdown-menue"> %>
+                                    <%# <%= f.select :production_status, {'着手不可': 1, '制作待ち': 2, '製作中': 3, '制作完了': 4}, { include_blank: '選択してください'}, { class: 'form-control', required: true } %> %>
+                                <%# </div> %>
+                                    <%# <%= f.submit '更新', class: 'btn btn-primary' %> %>
+                                <%# <% end %> %>
                         </td>
                     </tr>
-                <%= %>
+                <% end %>
             </tbody>
         </table>
     </div>
@@ -74,15 +76,15 @@
         <table class="table mt-3row">
             <tr>
                 <th>商品合計</th>
-                <th><%= @orders.total_fee %>円</th>
+                <th><%= @order_price.subtotal %>円</th>
             </tr>
             <tr>
                 <th>送料</th>
-                <th><%= @orders.postage %>円</th>
+                <th><%= @order.postage %>円</th>
             </tr>
             <tr>
                 <th>請求金額合計</th>
-                <th><%= @orders.fee_including_postage %>円</th>
+                <th><%= @order.total_fee %>円</th>
             </tr>
         </table>
     </div>

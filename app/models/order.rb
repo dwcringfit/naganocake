@@ -8,12 +8,12 @@ class Order < ApplicationRecord
   # 今日登録された情報を抽出
   scope :created_today, -> { where( "created_at >= ?", Time.zone.now.beginning_of_day)}
 
-  def fee_including_postage
-    
+  def all_shipping_info
+      self.post_number + self.address + self.receiver
   end
 
-  def subtotal
-
+  def order_total
+      (self.price * self.item_count)
   end
   
 end
