@@ -226,3 +226,18 @@ ja:
     genre:
       name: ジャンル名
       is_valid: 有効もしくは無効
+    delivery:
+      address: 配送先住所
+      post_number: 郵便番号
+      receiver: 受取人
+    client:
+      first_name: 苗字
+      family_name: 名前
+      first_name_kana: 苗字（カナ）
+      family_name_kana:　名前（カナ）
+      post_number:　郵便番号
+      address: 住所
+      tel: 電話番号
+      email: メールアドレス
+      encrypted_password:　ログインパスワード
+      is_valid:　会員資格
