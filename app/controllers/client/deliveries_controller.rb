@@ -24,8 +24,11 @@ class Client::DeliveriesController < Client::Base
   end
 
   def update
-    @delivery.update(delivery_params)
-    redirect_to deliveries_path
+    if @delivery.update(delivery_params)
+      redirect_to deliveries_path
+    else
+      render 'edit'
+    end
   end
 
   def destroy

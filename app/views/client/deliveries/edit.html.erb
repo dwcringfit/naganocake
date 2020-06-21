@@ -4,6 +4,8 @@
 
 <div class="row">
     <%= form_for(@delivery) do |f| %>
+    <%= render "layouts/error_messages", model: f.object %>
+
     <div class="form-group">
         <%= f.label :"郵便番号ハイフンなし", class: "col-sm-2"  %>
         <%= f.text_field :post_number, class: "col"  %>
