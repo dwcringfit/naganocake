@@ -10,7 +10,7 @@
             <h3>注文情報</h3>
             <tr>
                 <th class="active">注文日</th>
-                <td><%= l @order.created_at %></td>
+                <td><%= l @order.created_at, format: :short %></td>
             </tr>
             <tr>
                 <th class="active">配送先</th>
@@ -31,7 +31,7 @@
         <table class="table table-hover table-bordered">
             <tr>
                 <th class="active">商品合計</th>
-                <td><%= @order_price.price %></td>
+                <td><%= @order.sub_total %></td>
             </tr>
             <tr>
                 <th class="active">配送料</th>

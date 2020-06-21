@@ -12,8 +12,8 @@ class Order < ApplicationRecord
       self.post_number + self.address + self.receiver
   end
 
-  def order_total
-      (self.price * self.item_count)
+  def sub_total
+      self.total_fee - self.postage
   end
   
 end
