@@ -9,7 +9,6 @@ class Client::OrdersController < Client::Base
 
   def index
     @orders = Order.where(client_id: current_client.id)
-    # @orders = Order.all
   end
 
   def new
@@ -28,8 +27,7 @@ private
 def correct_client
     @order = Order.find(params[:id])
     unless current_client.id == @order.client_id
-      redirect_to orders_path(current_client)
-      flash[:alert] = "アクセス権を超えています。あなたの注文履歴に戻りました。"
+      redirect_to root_path
     end
 end
 
