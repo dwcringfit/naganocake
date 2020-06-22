@@ -1,8 +1,10 @@
 class Client::CartItemsController < Client::Base
   # 注文共通処理を読込
 	include CommonOrder
-		
-  def index
+
+	   before_action :set_cart_items, only:[:index, :destroy_all]
+
+    def index
 		@cart_items = current_client.cart_items
 		@item_total_amount = CommonOrder.calc_item_total_amount(@cart_items)
 	end
@@ -35,7 +37,6 @@ class Client::CartItemsController < Client::Base
 		if cart_item.update(cart_item_params)
 		   redirect_to cart_items_path
 		else
-		   @cart_items = current_client.cart_items
 		   flash[:cartitem_update_error] = "商品数を１以上で選択してください"
            redirect_to cart_items_path
         end
@@ -48,7 +49,6 @@ class Client::CartItemsController < Client::Base
 	end
 
 	def destroy_all
-		@cart_items = current_client.cart_items
 		@cart_items.destroy_all
 		redirect_to cart_items_path
 	end
@@ -57,5 +57,9 @@ class Client::CartItemsController < Client::Base
 
 	    def cart_item_params
 		    params.require(:cart_item).permit(:item_id, :item_count)
+	    end
+
+	    def set_cart_items
+	    	@cart_items = current_client.cart_items
 	    end
 end
