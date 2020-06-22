@@ -1,6 +1,9 @@
 class Client::OrdersController < Client::Base
   before_action :correct_client, only: [:show]
 
+  def thanks
+  end
+  
   def confirm
   end
 
