@@ -57,7 +57,6 @@ RSpec.describe "マスタ登録（管理者）", type: :system do
         expect(current_path).to eq admin_clients_path
       end
       it "注文履歴一覧へ遷移できること" do
-        pending("実装中")
         click_on "注文履歴一覧"
         expect(current_path).to eq admin_orders_path
       end
