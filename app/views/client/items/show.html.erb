@@ -1,15 +1,8 @@
-<!-- カートに商品追加できなかった時のフラッシュメッセージ -->
-<% if flash[:cartitem_create_error] %>
-    <div class = "row">
-	    <div class="alert alert-danger" role="alert">
-		    <%= flash[:cartitem_create_error] %>
-	    </div>
-　　</div>
-<% end %>
+<%= render "layouts/error_messages", model: @cart_item %>
 
 <div class = "row">
     <div class="col-xs-2">
-			<%= render 'genre_search', genres: @genres %>
+		   <%= render 'layouts/genre_search', genres: @genres %>
 		   <!--ジャンル検索窓を表示する -->
     </div>
 
@@ -22,10 +15,7 @@
 			 <%= @item.price_tax_included %><br>
 
                    <!-- 以下、カートへデータの引き渡しを行う  -->
-					<%= form_for(@cart_item, url: cart_items_path) do |f| %>
-
-                    <%= render "layouts/error_messages", model: f.object %>
-
+					<%= form_for(CartItem.new, url: cart_items_path) do |f| %>
 					<%= f.hidden_field :item_id, value: @item.id %>
 					<td><%= f.select :item_count,options_for_select((1..10).to_a),include_blank: "個数選択" %></td>
 					<td><%= f.submit "購入する", class: 'btn btn-primary btn-block' %></td>
