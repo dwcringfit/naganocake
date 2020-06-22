@@ -1,5 +1,8 @@
 class Order < ApplicationRecord
 
+  # 今日登録された情報を抽出
+  scope :created_today, -> { where( "created_at >= ?", Time.zone.now.beginning_of_day)}
+
   has_many :order_items, dependent: :destroy
   has_many :items, through: :order_items
 
