@@ -56,9 +56,9 @@ ActiveRecord::Schema.define(version: 2020_06_22_050315) do
 
   create_table "deliveries", force: :cascade do |t|
     t.integer "client_id", null: false
-    t.string "address", null: false
-    t.string "post_number", null: false
-    t.string "receiver", null: false
+    t.string "address", default: "", null: false
+    t.string "post_number", default: "", null: false
+    t.string "receiver", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["client_id"], name: "index_deliveries_on_client_id"
@@ -90,11 +90,13 @@ ActiveRecord::Schema.define(version: 2020_06_22_050315) do
     t.integer "production_status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_order_items_on_item_id"
+    t.index ["order_id"], name: "index_order_items_on_order_id"
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "client_id", null: false
-    t.integer "status", default: 0, null: false
+    t.integer "user_id", null: false
+    t.integer "status", null: false
     t.integer "payment_method", null: false
     t.integer "postage", null: false
     t.integer "total_fee", null: false
@@ -103,7 +105,6 @@ ActiveRecord::Schema.define(version: 2020_06_22_050315) do
     t.string "receiver", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["client_id"], name: "index_orders_on_client_id"
   end
 
 end
