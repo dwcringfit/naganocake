@@ -1,7 +1,8 @@
 class Client::OrdersController < Client::Base
+  before_action :correct_client, only: [:show]
   # 注文共通処理を読込
   include CommonOrder
-  
+
   def thanks
   end
 
@@ -10,7 +11,7 @@ class Client::OrdersController < Client::Base
     @total_fee = CommonOrder.calc_billing_amount(cart_items)
     # 住所を選択
     @order = current_client.orders.new(set_order)
-    # case文による条件分岐を行う
+    # case文で住所選択の条件分岐を行う
     case params[:addressee]
     when "ご自身の住所"
       @order.address = current_client.address
@@ -25,7 +26,7 @@ class Client::OrdersController < Client::Base
   end
 
   def index
-    @orders = Order.all
+    @orders = Order.where(client_id: current_client.id)
   end
 
   def new
@@ -62,11 +63,18 @@ class Client::OrdersController < Client::Base
   end
 
   private
+  def correct_client
+    @order = Order.find(params[:id])
+    unless current_client.id == @order.client_id
+      redirect_to root_path
+    end
+  end
+
   def set_order
     params.require(:order).permit(:payment_method, :address, :post_number, :receiver)
   end
+
   def set_delivery
     params.require(:order).require(:delivery).permit(:id)
   end
-end
 end
