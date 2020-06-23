@@ -1,17 +1,14 @@
-<% if flash[:cartitem_update_error] %>
-    <div class = "row">
-	    <div class="alert alert-danger" role="alert">
-		    <%= flash[:cartitem_update_error] %>
-	    </div>
-　　</div>
+<% if @cart_item.present? %>
+  <%= render "layouts/error_messages", model: @cart_item %>
 <% end %>
+
 
 <div class="row">
 	<div class="col-md-4">
 	    <h3>ショッピングカート</h3>
 	</div>
 	<div class="col-md-offset-6 col-md-2">
-	    <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, data: {confirm: "本当にカートを空にしてもよろしいですか？"}, class: "btn btn-danger" %>
+	    <h3><%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, data: {confirm: "本当にカートを空にしてもよろしいですか？"}, class: "btn btn-danger" %></h3>
     </div>
 </div>
 
@@ -35,11 +32,11 @@
 			            <td><%= cart_item.item.price_tax_included %></td>
 			            <td><%= form_for(cart_item) do |f| %>
 			                <%= f.number_field :item_count, placeholder: "#{cart_item.item_count}" %>
-			                <%= f.submit "変更" , class: "btn btn-primary" %></td>
+			                <%= f.submit "変更" , class: "btn btn-primary" %>
+			                <% end %></td>
 			            <td><%= cart_item.subtotal %></td>
 			            <td><%= link_to "削除する", cart_item_path(cart_item.item_id), method: :delete, class: "btn btn-danger" %></td>
 		            </tr>
-		        <% end %>
 		        <% end %>
 		    <% end %>
 		</tbody>

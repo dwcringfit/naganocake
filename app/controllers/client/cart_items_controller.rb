@@ -1,10 +1,11 @@
 class Client::CartItemsController < Client::Base
   # 注文共通処理を読込
 	include CommonOrder
-		
-  def index
-		@cart_items = current_client.cart_items
-		@item_total_amount = CommonOrder.calc_item_total_amount(@cart_items)
+
+	   before_action :set_cart_items, only:[:index, :destroy_all, :update]
+	   before_action :set_item_total_amount, only:[:index, :update]
+
+    def index
 	end
 
 	def create
@@ -19,25 +20,23 @@ class Client::CartItemsController < Client::Base
 		   @cart_item.client_id = current_client.id
 		   @cart_item.item_id = @item.id
 
-		   if @item.is_sale
-		      @cart_item.save
+		   if @cart_item.save
 		      redirect_to cart_items_path
 		   else
-		      flash[:cartitem_create_error] = "商品が売り切れています。"
-		      redirect_to item_path(@item)
+		   	  @item = Item.find(params[:cart_item][:item_id])
+              @genres = Genre.all
+		      render template: "client/items/show"
 		   end
 		end
 	end
 
 	def update
-		cart_item = CartItem.find(params[:item_id])
+		@cart_item = CartItem.find(params[:item_id])
 
-		if cart_item.update(cart_item_params)
+		if @cart_item.update(cart_item_params)
 		   redirect_to cart_items_path
 		else
-		   @cart_items = current_client.cart_items
-		   flash[:cartitem_update_error] = "商品数を１以上で選択してください"
-           redirect_to cart_items_path
+		   render "index"
         end
 	end
 
@@ -48,7 +47,6 @@ class Client::CartItemsController < Client::Base
 	end
 
 	def destroy_all
-		@cart_items = current_client.cart_items
 		@cart_items.destroy_all
 		redirect_to cart_items_path
 	end
@@ -57,5 +55,13 @@ class Client::CartItemsController < Client::Base
 
 	    def cart_item_params
 		    params.require(:cart_item).permit(:item_id, :item_count)
+	    end
+
+	    def set_cart_items
+	    	@cart_items = current_client.cart_items
+	    end
+
+	    def set_item_total_amount
+	    	@item_total_amount = CommonOrder.calc_item_total_amount(@cart_items)
 	    end
 end
