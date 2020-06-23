@@ -1,12 +1,12 @@
 <div class = "row">
-	<div class="col-xs-4">
-		<%= attachment_image_tag(@item, :image, format: 'jpeg', size: '300x300', fallback: "no_image.jpg") %>
+	<div class="col-xs-5">
+		<%= attachment_image_tag(@item, :image, format: 'jpeg', size: '400x400', fallback: "no_image.jpg") %>
 	</div>
-	<div class="col-xs-8">
-		 商品名  <%= @item.name %><br>
-	     商品説明 <%= @item.context %><br>
-         税込価格（税抜価格）     <%= @item.price_tax_included %>円 （ <%= @item.price %>円 ）<br>
-	     販売ステータス  <%= @item.is_sale ? "販売中" : "売り切れ" %><br>
-	     <%= link_to "編集する",edit_admin_item_path(@item), class: "btn btn-success edit_admin_item_#{@item.id}" %><br>
+	<div class="col-xs-7">
+		 <h3><strong>商品名  <%= @item.name %></strong></h3><br><br>
+	     <h4>商品説明 <%= @item.context %></h4><br><br>
+         <h4>税込価格（税抜価格）     <%= @item.price_tax_included %>円 （ <%= @item.price %>円 ）</h4><br><br>
+	     <h4>販売ステータス  <%= @item.is_sale ? "販売中" : "売り切れ" %></h4><br>
+	     <%= link_to "編集する",edit_admin_item_path(@item), class: "btn btn-primary edit_admin_item_#{@item.id}" %><br>
 	</div>
 </div>
