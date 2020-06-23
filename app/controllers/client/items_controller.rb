@@ -1,5 +1,5 @@
 class Client::ItemsController < Client::Base
-
+	skip_before_action  :authenticate_client!
 
   def index
        @genres = Genre.where(is_valid: true)
@@ -10,7 +10,6 @@ class Client::ItemsController < Client::Base
       @items = Item.all #それ以外は商品すべてを取得
     end
   end
-
 
   def show
     @item = Item.find(params[:id])

@@ -1,11 +1,11 @@
 <!--ヘッダーの記述-->
-<header class="navbar navbar-fixed-top navbar-inverse">
+<header class="navbar fixed-top">
   <div class="container">
     <nav class="nav navbar-nav navbar-left">
       <span>ながのCAKE</span>
     </nav>
     <nav>
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-dark navbar-right">
         <% if client_signed_in? %>
           <li><p>ようこそ、<%= current_client.get_full_name %>さん！</p></li>
           <li><%= link_to ' マイページ', client_path(current_client), class: 'glyphicon glyphicon-user user' %></li>
