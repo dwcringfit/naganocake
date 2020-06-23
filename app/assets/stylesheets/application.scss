@@ -32,10 +32,6 @@ a {
    color: #866629 ;
    }
 
-a:visited {
-   color: #866629 ;
-}
-
 
 
 /* レイアウト全体 */
@@ -52,7 +48,7 @@ header {
 }
 
 body {
-	margin-top: 60px;
+	margin-top: 10px;
 }
 
 #error_explanation {
@@ -67,4 +63,19 @@ body {
 
 .actions {
 	margin: 10px 0;
+}
+
+.origin-btn {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #866629;
+  border: solid 2px #866629;
+  border-radius: 3px;
+  transition: .4s;
+}
+
+.origin-btn:hover {
+  background: #866629;
+  color: white;
 }

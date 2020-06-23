@@ -1,3 +1,18 @@
 // Place all the styles related to the admin/items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.origin-btn {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #866629;
+  border: solid 2px #866629;
+  border-radius: 3px;
+  transition: .4s;
+}
+
+.origin-btn:hover {
+  background: #866629;
+  color: white;
+}
