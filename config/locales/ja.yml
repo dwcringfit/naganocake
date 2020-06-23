@@ -11,6 +11,7 @@ ja:
       jenre: ジャンル
       delivery: 配送先
       client: お客様
+      cart_item: カート商品
     attributes:
       item:
         name: 商品名
@@ -35,6 +36,9 @@ ja:
         email: メールアドレス
         encrypted_password: ログインパスワード
         is_valid: 会員資格
+      cart_item:
+        item_id: 商品
+        item_count: 商品数
   date:
     abbr_day_names:
       - 日
@@ -231,7 +235,7 @@ ja:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
       long: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
-      short: "%y/%m/%d %H:%M"
+      short: "%y/%m/%d"
       date: "%Y年%m月%d日 %H時%M分%S秒"
     pm: 午後
   attributes:
