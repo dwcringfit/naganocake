@@ -243,3 +243,18 @@ ja:
     genre:
       name: ジャンル名
       is_valid: 有効もしくは無効
+  enums:
+    order:
+      status:
+        waiting: 入金待ち
+        paid: 入金確認
+        in_production: 製作中
+        preparation: 発送準備中
+        shipped: 発送済み
+  enums:
+    order_item:
+      production_status:
+        unable: 着手不可
+        wait_for_product: 製作待ち
+        in_production: 製作中
+        finish: 製作完了

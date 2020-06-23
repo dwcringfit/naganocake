@@ -24,10 +24,10 @@
                 <th>
                     <%= form_with(model: @order, local: true) do |f| %>
                         <div class="dropdown col-xs-4">
-                            <%= f.label :status, '入金待ち', class: 'data-toggle="dropdown"' %>
+                            <%= f.label :status, 'ステータス名変更', class: 'data-toggle="dropdown"' %>
                         </div>
                         <div class="dropdown-menue col-xs-5">
-                            <%= f.select :status, {'入金待ち': 0, '入金確認': 1, '製作中': 2, '発送準備中': 3, '発送済み': 4}, { include_blank: '選択してください'}, { class: 'form-control', required: true } %>
+                            <%= f.select :status, Order.statuses.keys.to_a, { include_blank: '選択してください'}, { class: 'form-control', required: true } %>
                         </div>
                             <%= f.submit '更新', class: 'btn btn-primary' %>    
                         <% end %>   
@@ -57,15 +57,10 @@
                         <td><%= order_item.item_count %></td>
                         <td><%= order_item.subtotal %></td>
                         <td>
-                            <%# <%= form_with(model: order_item_path, local: true) do |f| %> %>
-                                <%# <div class="dropdown"> %>
-                                    <%# <%= f.label :production_status, '入金待ち', class: 'data-toggle="dropdown"'%> %>
-                                <%# </div> %>
-                                <%# <div class="dropdown-menue"> %>
-                                    <%# <%= f.select :production_status, {'着手不可': 1, '制作待ち': 2, '製作中': 3, '制作完了': 4}, { include_blank: '選択してください'}, { class: 'form-control', required: true } %> %>
-                                <%# </div> %>
-                                    <%# <%= f.submit '更新', class: 'btn btn-primary' %> %>
-                                <%# <% end %> %>
+                            <% form_for(order_path) do |f| %>
+                                <% f.select :production_status, order_item.production_status.keys.map {|k| [I18n.t("enums.order_item.production_status.#{k}"), k]}%>
+                                <% f.submit '更新', class: "btn btn-primary"%>
+                            <% end %>
                         </td>
                     </tr>
                 <% end %>
