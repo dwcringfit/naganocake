@@ -17,7 +17,7 @@
 					<%= form_for(CartItem.new, url: cart_items_path) do |f| %>
 					<%= f.hidden_field :item_id, value: @item.id %>
 					<td><%= f.select :item_count,options_for_select((1..10).to_a),include_blank: "個数選択" %></td><br><br>
-					<td><%= f.submit "カートに入れる", class: 'btn btn-primary btn-sm' %></td>
+					<td><%= f.submit "カートに入れる", class: 'origin-btn' %></td>
 					<% end %>
 				</div>
      </div>
