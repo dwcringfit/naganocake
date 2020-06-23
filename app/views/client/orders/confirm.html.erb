@@ -20,9 +20,55 @@
                 <td class="text-right"><%= cart_item.item.name %></td>
                 <td class="text-right"><%= cart_item.price_tax_included %></td>
                 <td class="text-right"><%= cart_item.item_count %></td>
-                <td class="text-right"><%= cart_item.subtotal %></td>
+                <% end %>
+                <td class="text-right"><%= @cart_total_fee %></td>
             </tr>
-            <% end %>
         </tbody>
     </table>
+</div>
+
+<div class="row">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th class="active">送料</th>
+                <td class="text-right"><%= @order.postage %>円</td>
+            </tr>
+            <tr>
+                <th class="active">商品合計</th>
+                <td class="text-right"><%= @cart_total_fee %></td>
+            </tr>
+            <tr>
+                <th class="active">請求金額</th>
+                <td class="text-right"><%= @total_fee %>円</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="row">
+    <table>
+        <tr>
+            <th class="col-xs-4">お支払い方法</th>
+            <td class="col-xs-8"><%= @order.payment_method %></td>
+        </tr>
+        <tr>
+            <th class="col-xs-4">お届け先</th>
+            <td class="col-xs-8">
+                <%= @order.post_number %><%= @order.address %><br>
+                <%= @order.receiver %>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class="row">
+    <%= form_for @order do |f| %>
+    <%= f.hidden_field :post_number, value: @order.post_number %>
+    <%= f.hidden_field :payment, value: @order.payment %>
+    <%= f.hidden_field :address, value: @order.address %>
+    <%= f.hidden_field :receiver, value: @order.receiver %>
+    <%= f.hidden_field :payment_method, value: @order.payment_method %>
+    <%= f.submit "購入を確定する", class:"btn btn-success" %>
+    <% end %>
 </div>

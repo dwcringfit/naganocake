@@ -41,26 +41,22 @@
                         <%= f.label(:receiver, "登録済住所から選択") %>
                         <%= f.fields_for @delivery do |t| %>
                         <p class="address">
-                            <%= t.select(:id, current_client.deliveries.map { |delivery| [delivery.address, delivery.id] }) %>
+                            <%= t.select(:id, current_client.deliveries.map { |delivery| [delivery.post_number + " " + delivery.address + " " + delivery.receiver] }) %>
                         </p>
                         <% end %>
                     </tr>
-                    ​
                     <tr>
                         <%= radio_button_tag :address, "新しいお届け先" %>
                         <%= f.label(:address, "新しいお届け先") %>
                     </tr>
-
                     <tr>
                         <td><%= f.label(:post_number, "郵便番号") %></td>
                         <td><%= f.text_field :post_number, class: "form-control" %></td>
                     </tr>
-                    ​
                     <tr>
                         <td><%= f.label(:address, "住所") %></td>
                         <td><%= f.text_field :address, class: "form-control" %></td>
                     </tr>
-
                     <tr>
                         <td><%= f.label(:receiver, "宛名") %></td>
                         <td><%= f.text_field :receiver, class: "form-control" %></td>

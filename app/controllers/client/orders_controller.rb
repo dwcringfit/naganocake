@@ -7,8 +7,10 @@ class Client::OrdersController < Client::Base
   end
 
   def confirm
-    # カート内の商品合計金額を算出
-    @total_fee = CommonOrder.calc_billing_amount(cart_items)
+    # 購入確定時の請求合計金額を計算
+    @cart_total_fee = CommonOrder.calc_billing_amount(cart_items_path)
+    # カート内の商品合計金額を計算
+    @cart_total_fee = CommonOrder.calc_item_total_amount(cart_items_path)
     # 住所を選択
     @order = current_client.orders.new(set_order)
     # case文で住所選択の条件分岐を行う
