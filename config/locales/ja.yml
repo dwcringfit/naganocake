@@ -11,6 +11,7 @@ ja:
       jenre: ジャンル
       delivery: 配送先
       client: お客様
+      cart_item: カート商品
     attributes:
       item:
         name: 商品名
@@ -35,6 +36,9 @@ ja:
         email: メールアドレス
         encrypted_password: ログインパスワード
         is_valid: 会員資格
+      cart_item:
+        item_id: 商品
+        item_count: 商品数
   date:
     abbr_day_names:
       - 日
