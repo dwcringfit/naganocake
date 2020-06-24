@@ -61,7 +61,6 @@ ActiveRecord::Schema.define(version: 2020_06_22_050315) do
     t.string "receiver", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["client_id"], name: "index_deliveries_on_client_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -90,8 +89,6 @@ ActiveRecord::Schema.define(version: 2020_06_22_050315) do
     t.integer "production_status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_order_items_on_item_id"
-    t.index ["order_id"], name: "index_order_items_on_order_id"
   end
 
   create_table "orders", force: :cascade do |t|
