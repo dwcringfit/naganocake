@@ -7,24 +7,32 @@ class Client::OrdersController < Client::Base
   end
 
   def confirm
-    # 購入確定時の請求合計金額を計算
-    @cart_total_fee = CommonOrder.calc_billing_amount(cart_items_path)
     # カート内の商品合計金額を計算
-    @cart_total_fee = CommonOrder.calc_item_total_amount(cart_items_path)
+    @cart_total_fee = CommonOrder.calc_item_total_amount(current_client.cart_items)
     # 住所を選択
     @order = current_client.orders.new(set_order)
+    @order.postage = CommonOrder::POSTAGE
+    # 購入確定時の請求合計金額を計算
+    @order.total_fee = CommonOrder.calc_billing_amount(current_client.cart_items)
     # case文で住所選択の条件分岐を行う
-    case params[:addressee]
+    case params[:address]
     when "ご自身の住所"
       @order.address = current_client.address
       @order.post_number = current_client.post_number
       @order.receiver = current_client.first_name + current_client.family_name
     when "登録済住所から選択"
-      @order.address = Delivery.find(delivery[:id]).address
-      @order.post_number = Delivery.find(delivery[:id]).post_number
-      @order.receiver = Delivery.find(delivery[:id]).receiver
+      @order.address = current_client.deliveries.find(params[:delivery_id]).address
+      @order.post_number = current_client.deliveries.find(params[:delivery_id]).post_number
+      @order.receiver = current_client.deliveries.find(params[:delivery_id]).receiver
     when "新しいお届け先"
     end
+
+    unless @order.valid?
+      @delivery = Delivery.new
+      render :new
+    end
+
+
   end
 
   def index
@@ -38,6 +46,7 @@ class Client::OrdersController < Client::Base
 
   def create
     @order = current_client.orders.new(set_order)
+    @order.postage = CommonOrder::POSTAGE
     if @order.save!
       current_client.cart_items.each do |cart_item|
         # 注文商品テーブルにレコードを追加する
@@ -73,7 +82,7 @@ class Client::OrdersController < Client::Base
   end
 
   def set_order
-    params.require(:order).permit(:payment_method, :address, :post_number, :receiver)
+    params.require(:order).permit(:total_fee, :payment_method, :address, :post_number, :receiver)
   end
 
   def set_delivery

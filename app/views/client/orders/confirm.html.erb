@@ -18,7 +18,7 @@
             <% current_client.cart_items.each do |cart_item| %>
             <tr>
                 <td class="text-right"><%= cart_item.item.name %></td>
-                <td class="text-right"><%= cart_item.price_tax_included %></td>
+                <td class="text-right"><%= cart_item.item.price_tax_included %></td>
                 <td class="text-right"><%= cart_item.item_count %></td>
                 <% end %>
                 <td class="text-right"><%= @cart_total_fee %></td>
@@ -40,7 +40,7 @@
             </tr>
             <tr>
                 <th class="active">請求金額</th>
-                <td class="text-right"><%= @total_fee %>円</td>
+                <td class="text-right"><%= @order.total_fee %>円</td>
             </tr>
         </tbody>
     </table>
@@ -50,7 +50,7 @@
     <table>
         <tr>
             <th class="col-xs-4">お支払い方法</th>
-            <td class="col-xs-8"><%= @order.payment_method %></td>
+            <td class="col-xs-8"><%= @order.payment_method_i18n %></td>
         </tr>
         <tr>
             <th class="col-xs-4">お届け先</th>
@@ -65,7 +65,7 @@
 <div class="row">
     <%= form_for @order do |f| %>
     <%= f.hidden_field :post_number, value: @order.post_number %>
-    <%= f.hidden_field :payment, value: @order.payment %>
+    <%= f.hidden_field :total_fee, value: @order.total_fee %>
     <%= f.hidden_field :address, value: @order.address %>
     <%= f.hidden_field :receiver, value: @order.receiver %>
     <%= f.hidden_field :payment_method, value: @order.payment_method %>

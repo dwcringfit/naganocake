@@ -1,5 +1,6 @@
 <div class="row">
     <div class="col-xs-offset-1">
+        <%= render "layouts/error_messages", model: @order %>
         <h2 class="col-xs-4">注文情報入力</h2>
     </div>
 </div>
@@ -10,13 +11,13 @@
         <%= form_for(@order, url: confirm_orders_path) do |f| %>
         <div class="payment-method">
             <div>
-                <%= f.radio_button :payment_method, :"現金", checked: true %>
-                <%= f.label(:payment_method, "現金") %></p>
-            </div>
-            <div>
-                <%= f.radio_button :payment_method, :"クレジットカード" %>
-                <%= f.label(:payment_method, "クレジットカード") %>
+                <%= f.radio_button :payment_method, :credit_card, checked: true %>
+                <%= f.label :credit_card, "クレジットカード" %>
                 ​</div>
+            <div>
+                <%= f.radio_button :payment_method, :bank_transfer %>
+                <%= f.label :credit_card, "銀行振込" %>
+            </div>
         </div>
     </div>
 </div>
@@ -41,7 +42,7 @@
                         <%= f.label(:receiver, "登録済住所から選択") %>
                         <%= f.fields_for @delivery do |t| %>
                         <p class="address">
-                            <%= t.select(:id, current_client.deliveries.map { |delivery| [delivery.post_number + " " + delivery.address + " " + delivery.receiver] }) %>
+                            <%= select_tag 'delivery_id', options_for_select(current_client.deliveries.map { |delivery| [delivery.post_number + " " + delivery.address + " " + delivery.receiver, delivery.id] }) %>
                         </p>
                         <% end %>
                     </tr>
