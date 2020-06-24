@@ -247,3 +247,8 @@ ja:
     genre:
       name: ジャンル名
       is_valid: 有効もしくは無効
+  enums:
+    order:
+      payment_method:
+        credit_card: クレジットカード
+        bank_transfer: 銀行振込
