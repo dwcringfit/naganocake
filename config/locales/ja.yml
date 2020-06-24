@@ -255,7 +255,6 @@ ja:
         in_production: 製作中
         preparation: 発送準備中
         shipped: 発送済み
-  enums:
     order_item:
       production_status:
         unable: 着手不可

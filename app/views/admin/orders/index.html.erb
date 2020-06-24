@@ -17,7 +17,7 @@
                             <td><%= link_to (l order.created_at), admin_order_path(order) %></td>
                             <td><%= order.client.get_full_name %></td>
                             <td><%= order.order_items.count %></td>
-                            <td><%= order.status %></td>
+                            <td><%=  order.status %></td>
                         </tr>
                     <% end %>
                 <% end %>

@@ -13,18 +13,17 @@ class Admin::OrdersController < Admin::Base
 
     def update
         @order = Order.find(params[:id])
-        @order.update.(order_params)
-        redirect_to admin_order_path
+        if @order.update_attributes(order_params)
+            redirect_to admin_order_path
+        else
+            @order_items = @order.order_items
+            render 'show'
+        end
     end
 
-    #未完
-    # private
-    # def order_params
-    #     params.require(:order).permit(:status)
-    # end
-        
-    # def order_item_params
-    #     params.require(:order_item).permit(:production_status)
-    # end
+    private
+    def order_params
+        params.require(:order).permit(:status)
+    end
 
 end
