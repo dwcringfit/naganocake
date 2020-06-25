@@ -249,21 +249,20 @@ ja:
       is_valid: 有効もしくは無効
   enums:
     order:
-<<<<<<< HEAD
       status:
         waiting: 入金待ち
         paid: 入金確認
         in_production: 製作中
         preparation: 発送準備中
         shipped: 発送済み
+      payment_method:
+        credit_card: クレジットカード
+        bank_transfer: 銀行振込
     order_item:
       production_status:
         unable: 着手不可
         wait_for_product: 製作待ち
         in_production: 製作中
         finish: 製作完了
-=======
-      payment_method:
-        credit_card: クレジットカード
-        bank_transfer: 銀行振込
->>>>>>> master
+      
+

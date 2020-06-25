@@ -7,6 +7,7 @@ enum status: { waiting: 0, paid: 1, in_production: 2, preparation: 3, shipped: 4
 
 has_many :order_items
 has_many :items, through: :order_items
+# accepts_nested_attributes_for :order_items
 
 belongs_to :client
 
