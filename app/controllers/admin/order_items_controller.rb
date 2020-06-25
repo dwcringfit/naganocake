@@ -3,12 +3,20 @@ class Admin::OrderItemsController < ApplicationController
     def update
         @order_item = OrderItem.find(params[:id])
         if @order_item.update_attributes(order_item_params)
-            if @order_item.in_production?
-                Order.where(id: @order_item.id).update_all(status: :in_production)
-            else @order_item.finish?
-                Order.where(id: @order_item.id).update_all(status: :shipped)
+            @order = Order.find(params[:order_id])
+            finish_count = 0
+            @order.order_items.each do |order_item|
+                if order_item.in_production?
+                    @order.update(status: :in_production)
+                    break
+                elsif order_item.finish?
+                    finish_count += 1
+                end
             end
-            redirect_to admin_order_path(@order_item.order)
+            if @order.order_items.count == finish_count
+                @order.update(status: :preparation) 
+            end
+                redirect_to admin_order_path(@order)
         else
             @order = Order.find(params[:id])
             @order_items = @order.order_items
