@@ -37,6 +37,7 @@ class Client::OrdersController < Client::Base
 
   def index
     @orders = Order.where(client_id: current_client.id)
+    # current_client.orders
     # @order = OrderItem.where(order_id: current_client.id)
   end
 

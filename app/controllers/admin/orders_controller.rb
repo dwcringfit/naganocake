@@ -9,13 +9,13 @@ class Admin::OrdersController < Admin::Base
     def show
         @order = Order.find(params[:id])
         @order_items = @order.order_items
-        @order_price = @order.order_items.find_by(order_id: current_client.id)
+        # @order_price = @order.order_items.find_by(order_id: current_client.id)
     end
 
 
     def update
         @order = Order.find(params[:id])
-        @orderitem = OrderItem.where(order_id: @order.id)
+        # @orderitem = OrderItem.where(order_id: @order.id)
         if @order.update_attributes(order_params)
             if @order.paid?
                 OrderItem.where(order_id: @order.id).update_all(production_status: :wait_for_product)
