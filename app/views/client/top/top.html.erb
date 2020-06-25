@@ -17,7 +17,23 @@
       <%= render 'layouts/genre_search', genres: @genres %>
   </div>
   <div class="col-xs-9 pickup-item">
-  	<h2>Pick Up!!</h2>
+  	<h2>Pick Up!!</h2><br>
+  	<h4><%= link_to "＞＞more",items_path, method: :get %></h4><br>
+  	<ul>
+  	  <li><%= image_tag 'plum-cake',:size => '230x230' %></li>
+  	  <li><h4>期間限定  プラムのタルト</h4></li>
+  	  <li><h3> ￥1,500- </h3></li>
+  	</ul>
+  	<ul>
+  	  <li><%= image_tag 'cookie',:size => '230x230' %></li>
+  	  <li><h4>シュガーシナモンクッキー</h4></li>
+  	  <li><h3> ￥700- </h3></li>
+    </ul>
+    <ul>
+  	  <li><%= image_tag 'cake_2',:size => '230x230' %></li>
+  	  <li><h4>カフェレアチーズケーキ</h4></li>
+  	  <li><h3> ￥1,000- </h3></li>
+   </ul>
   </div>
 </div>
 

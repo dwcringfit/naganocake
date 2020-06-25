@@ -2,7 +2,15 @@
 <header class="navbar fixed-top">
   <div class="container">
     <nav class="nav navbar-nav navbar-left">
-      <span>ながのCAKE</span>
+       <% if admin_signed_in? %>
+         <%= link_to(root_path) do %>
+            <%= image_tag 'rogo-cream',:size => '310x60' %>
+         <% end %>
+      <% else %>
+         <%= link_to(root_path) do %>
+            <%= image_tag 'rogo',:size => '310x50' %>
+         <% end %>
+      <% end %>
     </nav>
     <nav>
       <ul class="nav navbar-nav navbar-dark navbar-right">
