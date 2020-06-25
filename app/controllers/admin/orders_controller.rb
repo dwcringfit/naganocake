@@ -15,7 +15,7 @@ class Admin::OrdersController < Admin::Base
 
     def update
         @order = Order.find(params[:id])
-        @orderitem = OrderItem.where(params[:id]: order_id)
+        # @orderitem = OrderItem.where(params[:id]: order_id)
         if @order.update_attributes(order_params)
             # case @order.status
             # when "入金確認"
