@@ -37,6 +37,8 @@ class Client::OrdersController < Client::Base
 
   def index
     @orders = Order.where(client_id: current_client.id)
+    # current_client.orders
+    # @order = OrderItem.where(order_id: current_client.id)
   end
 
   def new
@@ -67,6 +69,11 @@ class Client::OrdersController < Client::Base
     redirect_to thanks_orders_path
   end
 
+  def update
+    @order = Order.find(params[:id])
+    @oreder.update(status_params)
+  end
+
   def show
     @order = Order.find(params[:id])
     @order_items = @order.order_items
@@ -87,5 +94,9 @@ class Client::OrdersController < Client::Base
 
   def set_delivery
     params.require(:order).require(:delivery).permit(:id)
+  end
+
+  def status_params
+    params.require(:order).permit(:status)
   end
 end
