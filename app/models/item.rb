@@ -14,7 +14,7 @@ class Item < ApplicationRecord
     greater_than: 0 }
 	validates :is_sale, inclusion: { in: [true, false] }
 
-  attachment :image
+  	attachment :image
 
 	# 税込価格を取得
 	def price_tax_included(tax: 1.08)
