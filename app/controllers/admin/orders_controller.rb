@@ -15,14 +15,17 @@ class Admin::OrdersController < Admin::Base
 
     def update
         @order = Order.find(params[:id])
-        # @orderitem = OrderItem.where(params[:id]: order_id)
+        @orderitem = OrderItem.where(order_id: @order.id)
         if @order.update_attributes(order_params)
-            # case @order.status
-            # when "入金確認"
-            #     @orderitem.production_status = "製作待ち"
-            #     @orderitem.update(pro_status_params)
-            # end
+            if @order.paid?
+                OrderItem.where(order_id: @order.id).update_all(production_status: :wait_for_product)
+            end
             redirect_to admin_order_path(@order)
+            # case @order.status
+            # when @order.paid?
+            #     OrderItem.where(order_id: @order.id).update_all(production_status: :wait_for_production)
+            # end
+            # redirect_to admin_order_path(@order)
         else
             @order_items = @order.order_items
             render 'show'
@@ -34,7 +37,4 @@ class Admin::OrdersController < Admin::Base
         params.permit(:status)
     end
 
-    def pro_status_params
-        params.(:order_item).permit(:production_status)
-    end
 end
