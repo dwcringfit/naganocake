@@ -24,7 +24,7 @@
                     <% @orders.each do |order| %>
                         <tr>
                             <td><%= l order.created_at, format: :short %></td>
-                            <td><%= order.all_shipping_info %></td>
+                            <td><%= order.all_shipping_info.html_safe %></td>
                             <td><%= order.items.name %></td>
                             <td><%= order.total_fee %></td>
                             <td><%= order.status_i18n %></td>
