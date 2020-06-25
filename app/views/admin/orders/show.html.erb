@@ -17,20 +17,17 @@
             </tr>
             <tr>
                 <th>支払方法</th>
-                <th><%= @order.payment_method %></th>
+                <th><%= @order.payment_method_i18n %></th>
             </tr>
             <tr>
                 <th>注文ステータス</th>
                 <th>
-                    <%= form_with(model: @order, local: true) do |f| %>
-                        <div class="dropdown col-xs-4">
-                            <%= f.label :status, '入金待ち', class: 'data-toggle="dropdown"' %>
+                    <%= form_with url: admin_order_path(@order), method: :patch, local: true do |f| %>
+                        <div class="col-xs-5">
+                            <%= f.select :status, Order.statuses.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]},{selected: @order.status}, {class: 'form-control'} %>
                         </div>
-                        <div class="dropdown-menue col-xs-5">
-                            <%= f.select :status, {'入金待ち': 0, '入金確認': 1, '製作中': 2, '発送準備中': 3, '発送済み': 4}, { include_blank: '選択してください'}, { class: 'form-control', required: true } %>
-                        </div>
-                            <%= f.submit '更新', class: 'btn btn-primary' %>    
-                        <% end %>   
+                            <%= f.submit '更新', class: 'btn btn-primary', id: "order-status" %>    
+                    <% end %>   
                 </th>
             </tr>
         </table>
@@ -38,7 +35,7 @@
 </div>
 
 <div class="row mt-40">
-    <div class="col-xs-offset-1 col-xs-6">
+    <div class="col-xs-offset-1 col-xs-7">
         <table class="table">
             <thead>
                 <tr class="active">
@@ -57,15 +54,12 @@
                         <td><%= order_item.item_count %></td>
                         <td><%= order_item.subtotal %></td>
                         <td>
-                            <%# <%= form_with(model: order_item_path, local: true) do |f| %> %>
-                                <%# <div class="dropdown"> %>
-                                    <%# <%= f.label :production_status, '入金待ち', class: 'data-toggle="dropdown"'%> %>
-                                <%# </div> %>
-                                <%# <div class="dropdown-menue"> %>
-                                    <%# <%= f.select :production_status, {'着手不可': 1, '制作待ち': 2, '製作中': 3, '制作完了': 4}, { include_blank: '選択してください'}, { class: 'form-control', required: true } %> %>
-                                <%# </div> %>
-                                    <%# <%= f.submit '更新', class: 'btn btn-primary' %> %>
-                                <%# <% end %> %>
+                            <%= form_with model: [:admin, @order, order_item], local: true do |f| %>
+                                <div class="col-xs-6">
+                                    <%= f.select :production_status, OrderItem.production_statuses.keys.map {|k| [I18n.t("enums.order_item.production_status.#{k}"), k]}, {selected: order_item.production_status}, {class: 'form-control'} %>
+                                </div>
+                                <%= f.submit '更新', class: "btn btn-primary", id: "orderItem-status-#{order_item.id}" %>
+                            <% end %>
                         </td>
                     </tr>
                 <% end %>
