@@ -14,7 +14,7 @@
             </tr>
             <tr>
                 <th class="active">配送先</th>
-                <td><%= @order.all_shipping_info %></td>
+                <td><%= @order.all_shipping_info.html_safe %></td>
             </tr>
             <tr>
                 <th class="active">支払方法</th>

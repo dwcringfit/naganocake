@@ -14,7 +14,7 @@ belongs_to :client
 enum payment_method:{ credit_card: 0, bank_transfer: 1}
 
 def all_shipping_info
-    self.post_number + self.address + self.receiver
+    self.post_number + "    " + self.address + "<br>" + self.receiver
 end
 
 def sub_total

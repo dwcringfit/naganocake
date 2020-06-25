@@ -13,7 +13,7 @@
             </tr>
             <tr>
                 <th>配送先</th>
-                <th><%= @order.all_shipping_info %></th>
+                <th><%= @order.all_shipping_info.html_safe %></th>
             </tr>
             <tr>
                 <th>支払方法</th>
