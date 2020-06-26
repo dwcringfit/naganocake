@@ -11,4 +11,9 @@ FactoryBot.define do
     email {'hoge@example.com'}
     password {'password'}
   end
+  factory :client2, parent: :client do
+    family_name {'太郎'}
+    family_name_kana {'タロウ'}
+    email {'test@example.com'}
+  end
 end
