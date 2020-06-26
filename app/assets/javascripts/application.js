@@ -17,3 +17,11 @@
 //= require bootstrap-sprockets
 //= require autonumeric
 //= require_tree .
+
+$(document).ready(function() {
+  $(document).on('turbolinks:render', function() {
+    if ($('.h-adr').length) {
+      new YubinBango.MicroformatDom();
+    }
+  });
+});
