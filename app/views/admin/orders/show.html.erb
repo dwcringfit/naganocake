@@ -48,7 +48,7 @@
             </thead>
             <tbody>
                 <% @order_items.each do |order_item| %>
-                    <tr>
+                    <tr id=<%= "order-item-field-#{order_item.id}" %>>
                         <td><%= order_item.item.name %></td> 
                         <td><%= order_item.price  %></td>
                         <td><%= order_item.item_count %></td>

@@ -76,7 +76,7 @@ RSpec.describe "マスタ登録（管理者）", type: :system do
   end
 
   describe "商品画面" do
-    let(:genre) { create :genre }
+    let!(:genre) { create :genre }
     before { visit admin_items_path }
 
     context "商品新規登録画面の表示" do
