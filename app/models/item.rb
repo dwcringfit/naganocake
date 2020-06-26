@@ -14,7 +14,10 @@ class Item < ApplicationRecord
     greater_than: 0 }
 	validates :is_sale, inclusion: { in: [true, false] }
 
-  	attachment :image
+	attachment :image
+	
+	# 注文回数が多い商品を検索（デフォルト：上位4件抽出）
+	scope :recommend_list, -> (count: 4){ left_joins(:order_items).group(:item_id).order("count(order_items.id) desc").limit(count) }
 
 	# 税込価格を取得
 	def price_tax_included(tax: 1.08)
