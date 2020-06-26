@@ -16,7 +16,7 @@
 
             <tbody>
                 <% @clients.each do |client| %>
-                <tr>
+                <tr id=<%= "client-info-#{client.id}" %>>
                     <td><%= client.id %></td>
                     <td><%= link_to admin_client_path(client) do %>
                         <%= client.first_name %>
