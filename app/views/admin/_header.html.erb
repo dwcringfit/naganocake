@@ -3,11 +3,11 @@
   <div class="container">
     <nav class="nav navbar-nav navbar-left">
        <% if admin_signed_in? %>
-         <%= link_to(root_path) do %>
+         <%= link_to(admin_root_path) do %>
             <%= image_tag 'rogo-cream',:size => '310x60' %>
          <% end %>
       <% else %>
-         <%= link_to(root_path) do %>
+         <%= link_to(admin_root_path) do %>
             <%= image_tag 'rogo',:size => '310x50' %>
          <% end %>
       <% end %>
