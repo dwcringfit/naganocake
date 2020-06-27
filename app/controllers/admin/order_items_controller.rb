@@ -14,7 +14,6 @@ class Admin::OrderItemsController < ApplicationController
                 end
             end
             if @order.order_items.count == finish_count
-                logger.debug "order: #{@order.attributes.inspect}"
                 @order.update(status: :preparation) 
             end
                 redirect_to admin_order_path(@order)
