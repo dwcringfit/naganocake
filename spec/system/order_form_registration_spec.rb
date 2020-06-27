@@ -56,19 +56,22 @@ RSpec.describe "登録から注文(ECサイト)", type: :system do
   end
 
   describe "商品の選択とカート追加" do
+    before do
+      visit root_path
+    end
     context "トップ画面から任意の商品画像を選択" do
-      before { first("a[href='#{item_path(item)}']").click }
+      before { click_on item.name }
       it "選択した商品詳細画面へ遷移していること" do expect(current_path).to eq item_path(item) end
       it "選択した商品情報が正しく詳細画面に表示されていること" do
         expect(page.find("tbody")).to have_content item.genre.name
         expect(page).to have_content item.name
         expect(page).to have_content item.context
-        expect(page).to have_content item.price
+        expect(page).to have_content item.price_tax_included
       end
     end
     context "トップ画面から該当商品(1個目)を選択してカートに追加" do
       before do
-        first("a[href='#{item_path(item)}']").click
+        click_on item.name
         select 4, from: "cart_item[item_count]"
         click_on "カートに入れる"
       end

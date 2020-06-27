@@ -7,10 +7,7 @@ class Client::TopController < Client::Base
     else
        @items = Item.all #それ以外は商品すべてを取得
     end
-    @items_recommend = Item.recommend_list
-    if @items_recommend.count == 0
-    	@items_recommend = Item.all.limit(4)
-    end
+    @items_recommend = Item.all.limit(4)
   end
 
 
