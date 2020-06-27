@@ -10,7 +10,7 @@ class CartItem < ApplicationRecord
 
     # 商品小計を取得
     def subtotal
-        CommonOrder.calc_subtotal(item_price: self.item.price, item_count: self.item_count)
+        CommonOrder.calc_subtotal(item_price: self.item.price, item_count: self.item_count).to_s(:delimited)
     end
 
     def check_item_sale

@@ -10,7 +10,11 @@
 	    <h4>ショッピングカート</h4>
 	</div>
 	<div class="text-right col-xs-offset-4 col-xs-4">
-	    <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, data: {confirm: "本当にカートを空にしてもよろしいですか？"}, class: "origin-btn" %>
+		<% if @cart_items.present? %>
+	        <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, data: {confirm: "本当にカートを空にしてもよろしいですか？"}, class: "origin-btn" %>
+	    <% else %>
+	        <button class="origin-btn">カートを空にする</button>
+	    <% end %>
     </div>
 </div>
 
@@ -36,7 +40,7 @@
 			                               <%= f.number_field :item_count, placeholder: "#{cart_item.item_count}" %>
 			                               <%= f.submit "変更" , class: "origin-btn btn-sm" %>
 			                               <% end %></td>
-			            <td id="cart_item"><%= cart_item.subtotal %></td>
+			            <td id="cart_item"><%= cart_item.subtotal %>円</td>
 			            <td id="cart_item"><%= link_to "削除する", cart_item_path(cart_item.item_id), method: :delete, class: "origin-btn btn-sm" %></td>
 		            </tr>
 		        <% end %>
@@ -46,14 +50,14 @@
 </div>
 
 <div class="row">
-	<div class="col-xs-3">
+	<div class="col-xs-2">
 	    <%= link_to "買い物を続ける", root_path, class: "origin-btn" %>
     </div>
     <div class="total_amount col-xs-offset-6 col-xs-2">
 	    <p>合計金額</p>
     </div>
-    <div class="item_total_amount col-xs-1">
-    	<p><%= @item_total_amount %></p>
+    <div class="item_total_amount col-xs-2">
+    	<p><%= @item_total_amount %>円</p>
     </div>
 </div>
 
