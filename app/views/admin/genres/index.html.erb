@@ -32,7 +32,7 @@
 				<tr>
 					<td><%= genre.name %></td>
 					<td><%= genre.is_valid ? "有効" : "無効" %></td>
-					<td><%= link_to "編集する",edit_admin_genre_path(genre), class: "btn-sm btn-success edit_admin_genre_#{@genre.id}" %></td>
+					<td><%= link_to "編集する",edit_admin_genre_path(genre), class: "btn-sm origin-btn edit_admin_genre_#{@genre.id}" %></td>
 				</tr>
 				<% end %>
          </table>
