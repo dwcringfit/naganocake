@@ -33,7 +33,7 @@
 			<% if @cart_items.present? %>
 		        <% @cart_items.each do |cart_item| %>
 		            <tr>
-			            <td><%= attachment_image_tag(@item, :image, format: 'jpeg', size: '100x100', fallback: "no_image.jpg") %>
+			            <td><%= attachment_image_tag(cart_item.item, :image, format: 'jpeg', size: '100x100', fallback: "no_image.jpg") %>
 			                <%= cart_item.item.name %></td>
 			            <td id="cart_item"><%= cart_item.item.price_tax_included %></td>
 			            <td id="cart_item"><%= form_for(cart_item) do |f| %>
