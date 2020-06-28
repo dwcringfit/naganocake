@@ -21,20 +21,21 @@
             </thead>
             <tbody>
                 <% if @orders.any? %>
-                    <% @orders.each do |order| %>
-                        <tr>
-                            <td><%= l order.created_at, format: :short %></td>
-                            <td><%= order.all_shipping_info.html_safe %></td>
-                            <td>
-                                <% order.items.each do |item_name| %>
-                                    <%= item_name.name %><br>
-                                <% end %>
-                            </td>
-                            <td><%= order.total_fee %></td>
-                            <td><%= order.status_i18n %></td>
-                            <td><%= link_to '表示する', order_path(order), class: "btn origin-btn" %></td>
-                        </tr>
-                    <% end %>
+                        <% @orders.each do |order| %>
+                            <tr>
+                                <td><%= l order.created_at, format: :short %></td>
+                                <td><%= order.all_shipping_info.html_safe %></td>
+                                <td>
+                                    <% order.items.each do |item_name| %>
+                                        <%= item_name.name %><br>
+                                    <% end %>
+                                </td>
+                                <td><%= order.total_fee %></td>
+                                <td><%= order.status_i18n %></td>
+                                <td><%= link_to '表示する', order_path(order), class: "btn origin-btn" %></td>
+                            </tr>
+                        <% end %>
+                    <%= paginate @orders %>
                 <% end %>
             </tbody>
         </table>

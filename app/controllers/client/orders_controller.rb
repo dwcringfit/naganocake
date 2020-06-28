@@ -36,9 +36,8 @@ class Client::OrdersController < Client::Base
   end
 
   def index
-    @orders = Order.where(client_id: current_client.id)
+    @orders = Order.where(client_id: current_client.id).page(params[:page]).per(5).order(created_at: :desc)
     # current_client.orders
-    # @order = OrderItem.where(order_id: current_client.id)
   end
 
   def new
