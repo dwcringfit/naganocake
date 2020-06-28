@@ -14,9 +14,9 @@ class Client < ApplicationRecord
   validates :family_name, presence: true
   validates :first_name_kana, presence: true
   validates :family_name_kana, presence: true
-  validates :post_number, presence: true, format: {with: /\A[0-9]{3}[0-9]{4}\z/}
-  validates :address, presence: true, length: {maximum:250}
-  validates :tel, presence: true, format: { with: /\A\d{10}$|^\d{11}\z/ }
+  validates :post_number, presence: true
+  validates :address, presence: true
+  validates :tel, presence: true
 
   # 退会済み会員の場合はエラー
   def active_for_authentication?

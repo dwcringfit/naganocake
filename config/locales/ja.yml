@@ -238,15 +238,6 @@ ja:
       short: "%Y/%m/%d"
       date: "%Y年%m月%d日 %H時%M分%S秒"
     pm: 午後
-  attributes:
-    item:
-      name: 商品名
-      context: 商品説明
-      price: 商品価格
-      is_sale: 販売ステータス
-    genre:
-      name: ジャンル名
-      is_valid: 有効もしくは無効
   enums:
     order:
       status:
@@ -264,5 +255,3 @@ ja:
         wait_for_product: 製作待ち
         in_production: 製作中
         finish: 製作完了
-      
-
