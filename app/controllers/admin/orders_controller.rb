@@ -5,7 +5,7 @@ class Admin::OrdersController < Admin::Base
     def index
         case params[:order]
         when 'today'
-            @orders = Order.where(created_at: Time.zone.now.beginning_of_day).page(params[:page]).per(10).order(created_at: :desc)
+            @orders = Order.created_today.page(params[:page]).per(10).order(created_at: :desc)
         when 'all'
             @orders = Order.page(params[:page]).per(10).order(created_at: :desc)
         end
