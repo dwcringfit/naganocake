@@ -25,5 +25,14 @@
         <% end %>
       </ul>
     </nav>
+    <% if admin_signed_in? %>
+      <div class="row col-xs-offset-8 col-xs-4 pull-right">
+        <%= form_tag(admin_search_path,:method => 'get') do %>
+          <%= text_field_tag :search_word %>
+          <%= select_tag 'range',options_for_select(([["client","1"],["item","2"]])), class: "origin-btn btn-sm" %>
+          <%= submit_tag 'search', class: "origin-btn btn-sm" %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </header>

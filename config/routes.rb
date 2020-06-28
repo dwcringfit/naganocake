@@ -62,5 +62,7 @@ Rails.application.routes.draw do
 
     # 商品ジャンル
     resources :genres, except: [:show, :destroy]
+
+    get 'search', to: 'search#search'
   end
 end

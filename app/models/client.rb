@@ -37,4 +37,10 @@ class Client < ApplicationRecord
   def get_full_name_kana
     self.first_name_kana + self.family_name_kana
   end
+
+  # 検索結果を取得
+  def self.search(search_word)
+    @clients = Client.where(["family_name LIKE ? OR first_name LIKE ?", "%#{search_word}%", "%#{search_word}%"])
+  end
+
 end
