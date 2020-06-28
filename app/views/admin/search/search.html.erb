@@ -1,0 +1,64 @@
+<h2>検索結果</h2>
+
+<% if @clients %>
+    <div class="row mt-3">
+        <div class="offset-sm-1 col-sm-10">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>会員ID</th>
+                        <th>氏名</th>
+                        <th>メールアドレス</th>
+                        <th>ステータス</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <% @clients.each do |client| %>
+                        <tr id=<%= "client-info-#{client.id}" %>>
+                            <td><%= client.id %></td>
+                            <td><%= link_to admin_client_path(client) do %>
+                                    <%= client.first_name %>
+                                    <%= client.family_name %>
+                                <% end %>
+                            </td>
+                            <td><%= client.email %></td>
+                            <td><% if client.is_valid == true %>
+                                    有効会員
+                                <% else %>
+                                    退会済み
+                                <% end %>
+                            </td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+<% end %>
+
+<% if @items %>
+    <table class="table table-hover table-inverse">
+		<thead>
+		    <tr>
+			    <th>ID</th>
+				<th>商品名</th>
+				<th>税抜価格</th>
+				<th>ジャンル名</th>
+				<th>販売ステータス</th>
+			</tr>
+	    </thead>
+
+		<tbody>
+			<% @items.each do |item| %>
+				<tr>
+					<td><%= item.id %></td>
+					<td><%= link_to item.name, admin_item_path(item), class: "item_#{item.id}" %></td>
+					<td><%= item.price %></td>
+					<td><%= item.genre.name %></td>
+					<td><%= item.is_sale ? "販売中" : "売り切れ" %>
+				</tr>
+		    <% end %>
+		</tbody>
+	</table>
+<% end %>

@@ -62,6 +62,6 @@ class Client::CartItemsController < Client::Base
 	    end
 
 	    def set_item_total_amount
-	    	@item_total_amount = CommonOrder.calc_item_total_amount(@cart_items).to_s(:delimited)
+	    	@item_total_amount = CommonOrder.calc_item_total_amount(@cart_items)
 	    end
 end

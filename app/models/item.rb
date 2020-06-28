@@ -4,7 +4,7 @@ class Item < ApplicationRecord
 	has_many :orders, through: :order_items
 	has_many :cart_items, dependent: :destroy
 	has_many :clients, through: :cart_item, dependent: :destroy
-	
+
 
 	belongs_to :genre
 
@@ -15,7 +15,7 @@ class Item < ApplicationRecord
 	validates :is_sale, inclusion: { in: [true, false] }
 
 	attachment :image
-	
+
 	# 注文回数が多い商品を検索（デフォルト：上位4件抽出）
 	scope :recommend_list, -> (count: 4){ left_joins(:order_items).group(:item_id).order("count(order_items.id) desc").limit(count) }
 
@@ -26,11 +26,15 @@ class Item < ApplicationRecord
 		# 税込計算
 		(BigDecimal(self.price.to_s) * BigDecimal(tax.to_s)).ceil
 	end
-	
+
 	# 販売ステータス名称を取得
 	def sale_status_name
 		self.is_sale ? "販売中" : "売り切れ"
 	end
-	
-	
+
+	# 検索結果を取得
+	def self.search(search_word)
+		@items = Item.where(['name LIKE?', "%#{search_word}%"])
+	end
+
 end
