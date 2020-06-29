@@ -25,10 +25,10 @@
 - CSS3
 
 # 導入方法
-$ git clone git@github.com:dwcringfit/naganocake.git
-$ cd naganocake
-$ rails db:seed
-$ rails s -b 0.0.0.0
+- $ git clone git@github.com:dwcringfit/naganocake.git
+- $ cd naganocake
+- $ rails db:seed
+- $ rails s -b 0.0.0.0
 
 # 開発メンバー
 https://github.com/Libra4101
