@@ -31,13 +31,8 @@
 - $ rails s -b 0.0.0.0
 
 # 開発メンバー
-https://github.com/Libra4101
- - Rspec・ログイン機能・チーム全体統括
-https://github.com/yuto14
- - カートへの商品追加・検索機能
-https://github.com/fyewsha000
- - 商品の登録・編集機能、サイトデザイン、ロゴ作成
-https://github.com/kounaien
- - 配送先の追加、注文履歴機能
-https://github.com/Shimizu-Mitsuharu
- - 注文機能、顧客編集・退会機能
+- https://github.com/Libra4101 :Rspec・ログイン機能・チーム全体統括
+- https://github.com/yuto14 :カートへの商品追加・検索機能
+- https://github.com/fyewsha000 :商品の登録・編集機能、サイトデザイン、ロゴ作成
+- https://github.com/kounaien :配送先の追加、注文履歴機能
+- https://github.com/Shimizu-Mitsuharu :注文機能、顧客編集・退会機能
