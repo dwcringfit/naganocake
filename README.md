@@ -1,5 +1,5 @@
 # NaganoCAKE
-　このサイトはプログラミング教室、DMM WEBCAMP(https://web-camp.io/)のカリキュラムでチーム開発のフェーズとして作成した架空のお菓子販売ECサイトです。
+　このサイトはプログラミング教室、DMM WEBCAMP (https://web-camp.io/) のカリキュラムでチーム開発のフェーズとして作成した架空のお菓子販売ECサイトです。
 
 # 実装機能
 - 顧客側閲覧画面（Client）
